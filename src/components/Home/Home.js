@@ -19,9 +19,9 @@ class Home extends Component{
           stopAutoPlayOnHover
           centered
           infinite>
-          <img className='slide' src='https://media.50below.com/corporate/webdesign/merchslides/Hustler/8b257fb5-52db-4b1b-ac19-312b4ad49642.jpg' />
-          <img className='slide' src='https://static.visionamp.org/rubix/20161019/orig_4e906dc57f3965bd31e57df93b5b81002b8d6c93.jpg' />
-          <img className='slide' src='https://www.ewipower.com/sites/all/themes/theme321/images/BigDog_0717.jpg' />
+          <img alt='banner1' className='slide' src='https://media.50below.com/corporate/webdesign/merchslides/Hustler/8b257fb5-52db-4b1b-ac19-312b4ad49642.jpg' />
+          <img alt='banner2' className='slide' src='https://static.visionamp.org/rubix/20161019/orig_4e906dc57f3965bd31e57df93b5b81002b8d6c93.jpg' />
+          <img alt='banner3' className='slide' src='https://www.ewipower.com/sites/all/themes/theme321/images/BigDog_0717.jpg' />
         </Carousel>
         </div>
         <iframe className='map' title ='map' src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJBxjFLd7eTYYRxlCnKYHm_xc&key=AIzaSyC_swPRTg8ml90Dbg2Lww89KGsNPQfKUVc"></iframe>

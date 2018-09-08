@@ -1,0 +1,16 @@
+.landing{
+  display: flex;
+}
+.sales{
+  border: 1px solid black;
+  width: 48vw;
+  height: 90vh;
+}
+.mower_img{
+  height: 100%;
+  width: 100%;
+}
+.blades_img{
+  height: 100%;
+  width: 100%;
+}

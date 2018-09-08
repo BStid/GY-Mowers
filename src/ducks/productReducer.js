@@ -3,11 +3,13 @@ import axios from 'axios'
 const initialState = {
   mowers: [],
   blades: [],
+  serviceApts: [],
   isLoading: false
 }
 
 const GET_MOWERS = 'GET_MOWERS'
 const GET_BLADES = 'GET_BLADES'
+const SET_SERVICE = 'SET_SERVICE'
 
 export default function(state = initialState, action){
   switch (action.type) {
@@ -34,6 +36,11 @@ export default function(state = initialState, action){
         ...state,
         isLoading: true
       }
+    }case `${SET_SERVICE}_FULFILLED`:{
+      return{
+        ...state,
+        serviceApts: action.payload.data
+      }
     }
   
     default:
@@ -51,5 +58,12 @@ export function getBlades(){
   return{
     type: GET_BLADES,
     payload: axios('/api/blades')
+  }
+}
+export function setService(date, pickup, issue){
+  const body = {date, pickup, issue}
+  return{
+    type: SET_SERVICE,
+    payload: axios.post('/api/service', body)
   }
 }

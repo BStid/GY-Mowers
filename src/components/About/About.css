@@ -1,0 +1,66 @@
+.about_page{
+  display: flex;
+  flex-wrap: wrap;
+}
+.header_container{
+  position: relative;
+}
+.banner_pic{
+  width: 96vw;
+  height: 25vh;
+}
+.about_us{
+  float: left;
+  position: absolute;
+  z-index: 100;
+  left: 23vw;
+  top: 4vh;
+  font-family: 'Roboto-Condensed';
+  font-size: 5em;
+}
+.left_about{
+  width: 60vw;
+  text-align: left;
+  padding: 30px 50px;
+  font-family: 'Noto Serif JP', sans-serif;
+}
+.right_about{
+  text-align: left;
+  width: 25vw;
+}
+.contact_info{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.hours_container{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.days{
+  width: 10vw;
+}
+.times{
+  width: 10vw;
+}
+.about_map{
+  border: solid black 1px;
+  width: 88.3vw;
+  height: 30vh;
+  margin-top: 0;
+  margin-left: 2vw;
+}
+.about_text{
+  margin-top: 35px;
+}
+.gy_diff{
+  margin-top: 5vh;
+}
+.filler{
+  color: transparent;
+}

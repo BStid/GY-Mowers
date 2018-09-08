@@ -41,7 +41,8 @@ class Details extends Component{
                 {mower.brand === 'Hustler' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=AYMU9TWWYxM' playing={true}/></div> : null}             
             </div>
           )
-        }})
+        }
+        return ""})
     }
     return(
       <div className='details_page'>

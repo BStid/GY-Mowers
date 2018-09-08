@@ -7,7 +7,9 @@ const passport = require('passport');
 const strategy = require('./strategy')
 const port = 3001;
 const {getAllMowers, getAllBlades} = require('./controllers/productCtrl')
-
+const {addToCart, getCart} = require('./controllers/cartCtrl')
+const {setServiceApt} = require('./controllers/serviceCtrl')
+const {salesLogin, serviceLogin, adminLogin} = require('./controllers/loginCtrl')
 const app = express()
 app.use(json())
 
@@ -31,7 +33,7 @@ passport.serializeUser((profile, done) => {
   const db = app.get('db');
   db.get_user_by_authid(profile.id).then(user => {
     if (!user[0]) {
-      db.add_user_by_authid(profile.id, profile.displayName)
+      db.add_user_by_authid(profile.id)
         .then(response => {
           return done(null, response[0]);
         })
@@ -54,9 +56,22 @@ app.use((req, res, next) => {
 });
 
 
-
+//PRODUCT ENDPOINTS
 app.get('/api/mowers', getAllMowers)
 app.get('/api/blades', getAllBlades)
+
+//CART ENDPOINTS
+app.get('/api/cart', getCart);
+app.post('/api/cart', addToCart);
+
+//SERVICE ENDPOINTS
+app.post('/api/service', setServiceApt)
+
+//LOGIN ENDPOINTS
+app.get('/loginservice', serviceLogin);
+app.get('/loginsales', salesLogin);
+app.get('/loginadmin', adminLogin);
+
 
 app.listen(port, ()=> console.log(`listening on port ${port}`))
 
