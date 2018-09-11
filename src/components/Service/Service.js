@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import Dropdown from 'react-dropdown'
-import {setService} from '../../ducks/productReducer'
+import {setServiceDate, setServicePickup, setServiceIssue} from '../../ducks/productReducer'
 import 'react-dropdown/style.css'
+import {Link} from 'react-router-dom'
  
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -14,9 +14,6 @@ class Service extends Component{
     super()
 
     this.state = {
-      date: moment(),
-      pickup: '',
-      issue: '',
       issuePlace: 'Please give us a brief description of the problem or service you need done'
     }
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -34,13 +31,13 @@ class Service extends Component{
     return(
       <div>
         <h3>Will you need pick up and delivery?</h3>
-        <Dropdown options={options} onChange={(e)=>this.setState({pickup: e.value})} value={defaultOption} placeholder="Select an option" />
+        <Dropdown options={options} onChange={(e)=>this.props.setServicePickup({pickup: e.value})} value={defaultOption} placeholder="Select an option" />
         <h3>Please select preferred date for Pickup or store drop off</h3>
-        <DatePicker selected={this.state.date} onChange={this.handleDateChange}/>
-        <textarea rows="5" cols="100" id="issue" placeholder={this.state.issue.length > 0 ? this.state.issue : this.state.issuePlace}
-        onChange={(e) => this.setState({issue: e.target.value})}></textarea>
-        <h6>Chars Remaining{`(${500 - this.state.issue.length})`}</h6>
-        <button onClick={() =>{this.props.setService(this.state.date.format('LL'), this.state.pickup, this.state.issue)}}>submit</button>
+        <DatePicker selected={this.props.serviceDate} onChange={this.props.setServiceDate}/>
+        <textarea rows="5" cols="100" id="issue" placeholder={this.props.serviceIssue.length > 0 ? this.props.serviceIssue : this.state.issuePlace}
+        onChange={(e) => this.props.setServiceIssue({issue: e.target.value})}></textarea>
+        <h6>Chars Remaining{`(${500 - this.props.serviceIssue.length})`}</h6>
+        <Link to='/serviceinfo'><button>submit</button></Link>
       </div>
       
     )
@@ -49,4 +46,4 @@ class Service extends Component{
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {setService})(Service);
+export default connect(mapStateToProps, {setServiceDate, setServicePickup, setServiceIssue})(Service);

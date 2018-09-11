@@ -4,6 +4,12 @@ function getAllMowers(req, res){
   .catch(err => res.status(500)
   .send(err => console.log('something went wrong', err)))
 }
+function getMowerBrand(req, res){
+  const db = req.app.get('db')
+  db.get_mowers_by_brand(req.params.brand).then(response => res.status(200).send(response))
+  .catch(err => res.status(500)
+  .send(err => console.log('something went wrong', err)))
+}
 function getAllBlades(req, res){
   const db = req.app.get('db')
   db.get_all_blades().then(response => res.status(200).send(response))
@@ -14,5 +20,6 @@ function getAllBlades(req, res){
 
 module.exports = {
   getAllMowers,
-  getAllBlades
+  getAllBlades,
+  getMowerBrand
 }

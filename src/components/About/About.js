@@ -12,7 +12,7 @@ class About extends Component{
         </div>
         <div className='left_about'>
           <h2>Why GY:</h2>
-          <p className='about_text'>Starting as a small business in Fort Worth TX, we have big dreams. Our passion for residential and commercial lawn care, means that we provide our customers nothing but the highest quality equipment, that is guaranteed to meet their needs and keep both their own and their customers lawns beautiful!</p>
+          <p className='about_text'>Starting as a small business in Fort Worth, TX, we have big dreams. Our passion for residential and commercial lawn care, means that we provide our customers nothing but the highest quality equipment, that is guaranteed to meet their needs and keep both their own and their customers lawns beautiful!</p>
           <p className='about_text'>With a professional and motivated team, we strive to be the experts that bring a smile to your face. That’s why we’re always looking for ways to improve our service.</p>
           <h2 className='gy_diff'>The GY Difference</h2>
           <ul>

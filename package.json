@@ -10,6 +10,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "massive": "^5.2.1",
+    "material-ui": "^0.20.2",
     "moment": "^2.22.2",
     "passport": "^0.4.0",
     "passport-auth0": "^1.0.0",
@@ -19,8 +20,10 @@
     "react-dropdown": "^1.6.2",
     "react-player": "^1.6.4",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+    "react-toggle-button": "^2.2.0",
     "redux": "^4.0.0",
     "redux-promise-middleware": "^5.1.1"
   },

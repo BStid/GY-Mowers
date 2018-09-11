@@ -3,6 +3,26 @@
   display: flex;
   flex-wrap: wrap;
 }
+.filtered_top_bar{
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.top_bar_content{
+  text-align: left;
+  margin: 0;
+  width: 30vw;
+}
+.item{
+  margin: 0;
+}
+.top_bar_links{
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+}
 .sales_card{
   border: 1px solid slategray;
   width: 19vw;
@@ -15,4 +35,8 @@
 .sales_card_container{
   display: flex;
   flex-wrap: wrap
+}
+.page_heading{
+    width: 100%;
+    text-align: center;
 }

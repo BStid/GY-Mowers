@@ -2,8 +2,21 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import './Details.css'
 import ReactPlayer from 'react-player'
+import {addToCart} from '../../ducks/productReducer'
+import Modal from '../Modal/Modal'
 
 class Details extends Component{
+  constructor(){
+    super()
+
+    this.state = {isOpen: false}
+  }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
   render(){
     let deets =''
@@ -17,10 +30,14 @@ class Details extends Component{
               </div>
               <div className='right_side'>
                 <h1>{blade.title}</h1>
-                <div className='price'>{blade.price}</div>
+                <div className='price'>{`$${blade.price}`}</div>
                 <p className='desc'>{blade.description}</p>
-                <button className='cart_button'>Add To Cart</button>
+                <button className='cart_button' onClick={() =>{ 
+                  this.props.addToCart(blade)
+                  this.toggleModal()}
+                  }>Add To Cart</button>
               </div>
+              {/* <Modal show={this.state.isOpen} onClose={this.toggleModal}>Item added to cart!!</Modal> */}
             </div>
           )
         }})
@@ -34,11 +51,15 @@ class Details extends Component{
               </div>
               <div className='right_side'>
                 <h1>{mower.title}</h1>
-                <div className='price'>{mower.price}</div>
+                <div className='price'>{`$${mower.price}`}</div>
                 <p className='desc'>{mower.description}</p>
-                <button className='cart_button'>Add To Cart</button>
-              </div>              
-                {mower.brand === 'Hustler' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=AYMU9TWWYxM' playing={true}/></div> : null}             
+                <button className='cart_button' onClick={() => this.props.addToCart(mower)}>Add To Cart</button>
+              </div> 
+              <div className='vid_box'>
+                {mower.brand === 'Hustler' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=AYMU9TWWYxM' playing={true}/></div> : 
+                 mower.brand === 'Spartan' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=Zzh_GsgJBlw' playing={true}/></div> :
+                 mower.brand === 'BigDog' ?  <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=hABSF8MMv4s' playing={true}/></div>: null}             
+              </div>             
             </div>
           )
         }
@@ -55,8 +76,9 @@ class Details extends Component{
 function mapStateToProps(state){
   return{
     mowers: state.mowers,
-    blades: state.blades
+    blades: state.blades,
+    cart: state.cart
   }
 }
 
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps, {addToCart})(Details);

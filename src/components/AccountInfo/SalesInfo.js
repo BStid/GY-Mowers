@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-class AccountInfo extends Component{
+class SalesInfo extends Component{
   constructor(){
     super()
 
@@ -19,11 +19,11 @@ class AccountInfo extends Component{
 
   render(){
     return(
-      <div>Account Info</div>
+      <div>Sales Info</div>
     )
   }
 }
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(AccountInfo)
+export default connect(mapStateToProps)(SalesInfo)
