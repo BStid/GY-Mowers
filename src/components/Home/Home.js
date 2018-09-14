@@ -2,20 +2,27 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import './Home.css'
 import Carousel from '@brainhubeu/react-carousel';
+import {connect} from 'react-redux'
 import '@brainhubeu/react-carousel/lib/style.css';
 
 class Home extends Component{
 
   render(){
+    let redirect = ''
+    if(this.props.user && this.props.user.authid){
+      redirect = 'http://localhost:3000/#/service'
+    }else{
+      redirect = 'http://localhost:3001/login'
+    }
     return(
       <div>
         <Link to='/blades'><button className='blades_box'>Mower Blades</button></Link>
         <Link to='/mowers'><button className='mowers_box'>Zero Turn Mowers</button></Link>
-        <a href='http://localhost:3001/loginservice' ><button className='service_box'>Schedule Service</button></a>
+        <a href={redirect} ><button className='service_box'>Schedule Service</button></a>
         <div className='carousel'>
         <Carousel
           animationSpeed={2000}
-          autoPlay={7000}
+          autoPlay={5000}
           stopAutoPlayOnHover
           centered
           infinite>
@@ -30,4 +37,6 @@ class Home extends Component{
   }
 }
 
-export default Home;
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps)(Home);

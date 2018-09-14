@@ -1,8 +1,7 @@
-const addUserInfo = (req, res) => {
+function addUserInfo(req, res){
   const {authid, first, last, address, zip, state, email, phone, message} = req.body
   const db = req.app.get('db')
-  db.add_user_info([authid, first, last, address, zip, state, email, phone, message]).then(response => {
-    res.status(200).send(response)})
+  db.add_user_info([authid, first, last, address, zip, state, email, phone, message]).then(response => {res.status(200).send(response)})
   .catch(err => res.status(500).send(err => console.log('something went wrong', err)))
 }
 
@@ -20,5 +19,5 @@ const logout = (req, res) => {
 module.exports = {
   addUserInfo,
   getUser,
-  logout
+  logout,
 }

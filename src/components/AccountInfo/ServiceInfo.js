@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ToggleButton from 'react-toggle-button'
 import {setUserInfo, getUser} from '../../ducks/productReducer'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class ServiceInfo extends Component{
   constructor(){
@@ -19,13 +20,13 @@ class ServiceInfo extends Component{
       message: false,
     }
   }
+  
   componentDidMount(){
     this.props.getUser()
   }
 
   render(){
     let{first, last, address, zip, state, email, phone, message} = this.state;
-    console.log(this.state, this.props.user.authid)
     return(
       <div>
         <input onChange={e => this.setState({first: e.target.value})} placeholder={this.state.first ? this.state.first : 'First Name'}></input>
@@ -36,7 +37,7 @@ class ServiceInfo extends Component{
         <input onChange={e => this.setState({email: e.target.value})} placeholder={this.state.email ? this.state.email : 'Email'}></input>
         <input onChange={e => this.setState({phone: e.target.value})} placeholder={this.state.phone ? this.state.phone : 'Phone number'}></input>
         <ToggleButton inactiveLabel={'No'} activeLabel={'Yes'} value={ this.state.message || false } onToggle={(value) => {this.setState({message: !value})}}/>
-        <Link to='/confirmservice'><button onClick={() => {this.props.setUserInfo(this.props.user.authid ,first, last, address, zip, state, email, phone, message)}}>Submit</button></Link>
+        <Link to='/confirmservice'><button onClick={() => this.props.setUserInfo(this.props.user.authid ,first, last, address, zip, state, email, phone, message)}>Submit</button></Link>
       </div>
     )
   }

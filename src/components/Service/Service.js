@@ -27,11 +27,11 @@ class Service extends Component{
 
   render(){
     const options = ['yes', 'no']
-    const defaultOption = options[0]
+    const defaultOption = 'select..'
     return(
       <div>
         <h3>Will you need pick up and delivery?</h3>
-        <Dropdown options={options} onChange={(e)=>this.props.setServicePickup({pickup: e.value})} value={defaultOption} placeholder="Select an option" />
+        <Dropdown options={options} onChange={(e)=>this.props.setServicePickup({pickup: e.value})} value={this.props.servicePickup} />
         <h3>Please select preferred date for Pickup or store drop off</h3>
         <DatePicker selected={this.props.serviceDate} onChange={this.props.setServiceDate}/>
         <textarea rows="5" cols="100" id="issue" placeholder={this.props.serviceIssue.length > 0 ? this.props.serviceIssue : this.state.issuePlace}

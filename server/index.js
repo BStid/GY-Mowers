@@ -5,14 +5,25 @@ const massive = require('massive')
 const session = require('express-session')
 const passport = require('passport');
 const strategy = require('./strategy')
-const port = 3001;
+const nodemailer = require('nodemailer');
+const cors = require('cors')
+const path = require('path')
+const configureRoutes = require('./stripe')
 const {getAllMowers, getAllBlades, getMowerBrand} = require('./controllers/productCtrl')
-const {addToCart, getCart, deleteFromCart} = require('./controllers/cartCtrl')
+const {addToCart, getCart, deleteFromCart, addOrder} = require('./controllers/cartCtrl')
 const {setServiceApt} = require('./controllers/serviceCtrl')
 const {getUser, logout, addUserInfo} = require('./controllers/loginCtrl')
+const {getSkuReport, getDailyReport} = require('./controllers/reportCtrl')
 const app = express()
 app.use(json())
 
+const configureServer = app => {
+  app.use(cors());
+  app.use(json());
+};
+
+configureServer(app)
+configureRoutes(app);
 
 massive(process.env.CONNECTION_STRING)
 .then(db => {app.set('db', db)})
@@ -58,6 +69,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  if(!req.session.path) req.session.path = [];
+  next();
+})
+
 
 //PRODUCT ENDPOINTS
 app.get('/api/mowers', getAllMowers)
@@ -73,24 +89,60 @@ app.delete('/api/cart/:id' , deleteFromCart)
 app.post('/api/service', setServiceApt)
 
 //LOGIN ENDPOINTS
-app.get('/loginservice', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/service',
-  failureRedirect: 'http://localhost:3001/#/'
-}));
-app.get('/loginsales', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/salesinfo',
-  failureRedirect: 'http://localhost:3001/#/'
-}));
-app.get('/loginadmin', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/admin',
+app.get('/login', passport.authenticate('auth0', {
+  successRedirect: 'http://localhost:3000/#/',
   failureRedirect: 'http://localhost:3001/#/'
 }));
 
 //USER ENDPOINTS
 app.post('/api/user', addUserInfo);
 app.get('/api/user', getUser);
-app.get('/logout', logout);
+app.get('/api/logout', logout);
 
+//ORDERS ENDPOINTS
+app.post('/api/order', addOrder)
 
-app.listen(port, ()=> console.log(`listening on port ${port}`))
+//REPORT ENDPOINTS
+app.post('/api/skureport', getSkuReport)
+app.post('/api/dailyreport', getDailyReport)
 
+//MAIL ENDPOINTS
+app.post('/api/send', function(req, res, next) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
+    }
+  })
+  const mailOptions = {
+    from: `GY Mowers`,
+    to: `${req.body.email}`,
+    subject: `${req.body.subject}`,
+    text: `${req.body.message}`,
+    replyTo: `${process.env.EMAIL}`
+  }
+  transporter.sendMail(mailOptions, function(err, res) {
+    if (err) {
+      console.error('there was an error: ', err);
+    } else {
+      null
+    }
+  })
+})
+
+//TWILIO ENDPOINTS
+app.post('/api/sendsms', (req, res) => {
+  var client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
+  client.messages.create({
+    to: req.body.recipient,
+    from: process.env.TWILIO_SENDER,
+    body: req.body.message
+  }, function (err, responseData) {
+    if (!err) {
+      res.json({"From": responseData.from, "Body": responseData.body});
+    }
+  })
+})
+
+app.listen(process.env.SERVER_PORT, ()=> console.log(`listening on port ${process.env.SERVER_PORT}`))

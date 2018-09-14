@@ -11,6 +11,8 @@ const initialState = {
   serviceDate: moment(),
   servicePickup: '',
   serviceIssue: '',
+  cartTotal: 0,
+  loggedOut: false
 }
 
 const SET_SERVICE_DATE = 'SET_SERVICE_DATE'
@@ -25,6 +27,9 @@ const GET_USER = 'GET_USER'
 const DELETE_CART_ITEM = 'DELETE_CART_ITEM'
 const GET_FILTERED_MOWERS = 'GET_FILTERED_MOWERS'
 const SET_USER_INFO = 'SET_USER_INFO'
+const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL'
+const LOGOUT = 'LOGOUT'
+const CLEAR_CART = 'CLEAR_CART'
 
 export default function(state = initialState, action){
   switch (action.type) {
@@ -83,7 +88,8 @@ export default function(state = initialState, action){
     };case `${GET_USER}_FULFILLED`:
     return {
       ...state,
-      user: action.payload.data
+      user: action.payload.data,
+      loggedOut: false
     };
     case `${DELETE_CART_ITEM}_FULFILLED`:
     return{
@@ -108,9 +114,42 @@ export default function(state = initialState, action){
         ...state,
         service: action.payload.data
       }
+    }case UPDATE_CART_TOTAL:{
+      return{
+        ...state,
+        cartTotal: action.payload
+      }}case CLEAR_CART:{
+        return{
+          ...state,
+          cart: []
+        }
+    }case LOGOUT:{
+      return{
+        ...state,
+        loggedOut: true,
+        cart: [],
+        user: {}
+      }
     }
     default:
       return state;
+  }
+}
+export function clearCart(){
+  return{
+    type: CLEAR_CART
+  }
+}
+
+export function logout(){
+  return{
+    type: LOGOUT,
+    payload: axios('/api/logout').then(res => console.log(res))}
+}
+export function updateTotal(total){
+  return{
+    type: UPDATE_CART_TOTAL,
+    payload: total
   }
 }
 

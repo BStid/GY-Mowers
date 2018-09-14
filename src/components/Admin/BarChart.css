@@ -1,0 +1,24 @@
+.reporting_content{
+  background: black;
+}
+.filter_options{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.report_input{
+  width: 20vw;
+}
+.report_input_button{
+  width: 15vw;
+}
+h1{
+  color: #f1c116;
+}
+canvas{
+  margin-top: 5vh;
+  background: whitesmoke;
+}
+.Dropdown-root{
+  width: 15vw;
+}

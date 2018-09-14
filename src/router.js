@@ -12,6 +12,8 @@ import ServiceInfo from './components/AccountInfo/ServiceInfo'
 import Cart from './components/Cart/Cart'
 import FilteredSales from './components/Sales/FilteredSales'
 import ConfirmService from './components/Service/ConfirmService'
+import CheckoutScreen from './components/Checkout/CheckoutScreen'
+import Admin from './components/Admin/Admin'
 
 export default(
   <Switch>
@@ -27,5 +29,7 @@ export default(
     <Route component={ServiceInfo} path='/serviceinfo'/>
     <Route component={Cart} path='/cart'/>
     <Route component={ConfirmService} path='/confirmservice'/>
+    <Route component={CheckoutScreen} path='/checkout'/>
+    <Route component={Admin} path='/admin'/>
   </Switch>
 )

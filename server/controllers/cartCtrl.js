@@ -8,6 +8,13 @@ const deleteFromCart = (req, res) => {
   res.status(200).send(req.session.cart);
 };
 
+async function addOrder (req, res){
+  const db = req.app.get('db')
+  let lastOrder = 0
+  await db.get_last_order().then(response => lastOrder = parseInt((parseInt((response[0].max))+1)))
+  req.body.cart.map(e => db.add_order([lastOrder, e.product_id, req.body.userid, req.body.date]))
+}
+
 const getCart = (req, res) => {
   res.status(200).send(req.session.cart);
 };
@@ -15,5 +22,6 @@ const getCart = (req, res) => {
 module.exports = {
   addToCart,
   getCart,
-  deleteFromCart
+  deleteFromCart,
+  addOrder
 };
