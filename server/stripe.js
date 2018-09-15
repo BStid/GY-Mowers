@@ -5,7 +5,6 @@ const stripe = configureStripe(process.env.STRIPE_SECRET);
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   
   if (stripeErr) {
-    console.log(stripeErr)
     res.status(500).send({ Error: stripeRes });
   } else {
     res.status(200).send({ success: stripeRes });

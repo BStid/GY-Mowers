@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import ToggleButton from 'react-toggle-button'
 import {setUserInfo, getUser} from '../../ducks/productReducer'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+
 
 class ServiceInfo extends Component{
   constructor(){
@@ -20,22 +20,23 @@ class ServiceInfo extends Component{
       message: false,
     }
   }
-  
+
   componentDidMount(){
     this.props.getUser()
   }
 
   render(){
     let{first, last, address, zip, state, email, phone, message} = this.state;
+    console.log(this.props, this.props.user.authid)
     return(
       <div>
-        <input onChange={e => this.setState({first: e.target.value})} placeholder={this.state.first ? this.state.first : 'First Name'}></input>
-        <input onChange={e => this.setState({last: e.target.value})} placeholder={this.state.last ? this.state.last : 'Last Name'}></input>
-        <input onChange={e => this.setState({address: e.target.value})} placeholder={this.state.address ? this.state.address : 'Address'}></input>
-        <input onChange={e => this.setState({zip: e.target.value})} placeholder={this.state.zip ? this.state.zip : 'Zip Code'}></input>
-        <input onChange={e => this.setState({state: e.target.value})} placeholder={this.state.state ? this.state.state : 'State (TX, CA, ETC.'}></input>
-        <input onChange={e => this.setState({email: e.target.value})} placeholder={this.state.email ? this.state.email : 'Email'}></input>
-        <input onChange={e => this.setState({phone: e.target.value})} placeholder={this.state.phone ? this.state.phone : 'Phone number'}></input>
+        <input onChange={e => this.setState({first: e.target.value})} placeholder={this.props.user.first_name ? this.props.user.first_name : 'First Name'}></input>
+        <input onChange={e => this.setState({last: e.target.value})} placeholder={this.props.user.last_name ? this.props.user.last_name : 'Last Name'}></input>
+        <input onChange={e => this.setState({address: e.target.value})} placeholder={this.props.user.address ? this.props.user.address : 'Address'}></input>
+        <input onChange={e => this.setState({zip: e.target.value})} placeholder={this.props.user.zip ? this.props.user.zip : 'Zip Code'}></input>
+        <input onChange={e => this.setState({state: e.target.value})} placeholder={this.props.user.state ? this.props.user.state : 'State (TX, CA, ETC.'}></input>
+        <input onChange={e => this.setState({email: e.target.value})} placeholder={this.props.user.email ? this.props.user.email : 'Email'}></input>
+        <input onChange={e => this.setState({phone: e.target.value})} placeholder={this.props.user.phone ? this.props.user.phone : 'Phone number'}></input>
         <ToggleButton inactiveLabel={'No'} activeLabel={'Yes'} value={ this.state.message || false } onToggle={(value) => {this.setState({message: !value})}}/>
         <Link to='/confirmservice'><button onClick={() => this.props.setUserInfo(this.props.user.authid ,first, last, address, zip, state, email, phone, message)}>Submit</button></Link>
       </div>

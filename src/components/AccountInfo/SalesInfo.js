@@ -21,11 +21,11 @@ class SalesInfo extends Component{
   }
   componentDidMount(){
     this.props.getUser()
+    console.log(this.props, this.props.user.authid)
   }
 
   render(){
     let{first, last, address, zip, state, email, phone, message} = this.state;
-    console.log(this.state, this.props.user.authid)
     return(
       <div>
         <input onChange={e => this.setState({first: e.target.value})} placeholder={this.state.first ? this.state.first : 'First Name'}></input>

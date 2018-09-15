@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AdminNav from './AdminNav'
 
 
-class Admin extends Component{
+class OrderDetails extends Component{
   constructor(){
     super()
   }
@@ -23,4 +23,4 @@ class Admin extends Component{
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Admin)
+export default connect(mapStateToProps)(OrderDetails)

@@ -4,7 +4,6 @@ import DatePicker from 'react-datepicker';
 import Dropdown from 'react-dropdown'
 import {setServiceDate, setServicePickup, setServiceIssue} from '../../ducks/productReducer'
 import 'react-dropdown/style.css'
-import {Link} from 'react-router-dom'
  
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -17,12 +16,20 @@ class Service extends Component{
       issuePlace: 'Please give us a brief description of the problem or service you need done'
     }
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.redirect = this.redirect.bind(this)
   }
 
   handleDateChange(date) {
     this.setState({
       date: date
     });
+  }
+  redirect(){
+    if(this.props.user && this.props.user.first_name){
+      window.location.href = 'http://localhost:3000/#/confirmservice'
+    }else{
+      window.location.href = 'http://localhost:3000/#/serviceinfo'
+    }
   }
 
   render(){
@@ -37,7 +44,7 @@ class Service extends Component{
         <textarea rows="5" cols="100" id="issue" placeholder={this.props.serviceIssue.length > 0 ? this.props.serviceIssue : this.state.issuePlace}
         onChange={(e) => this.props.setServiceIssue({issue: e.target.value})}></textarea>
         <h6>Chars Remaining{`(${500 - this.props.serviceIssue.length})`}</h6>
-        <Link to='/serviceinfo'><button>submit</button></Link>
+        <button onClick={() => this.redirect()}>submit</button>
       </div>
       
     )

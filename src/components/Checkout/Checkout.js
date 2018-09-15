@@ -3,18 +3,17 @@ import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 require('dotenv').config()
 
-
-
 const CURRENCY = 'USD';
 
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert('Payment Successful');
+  window.location.assign('http://localhost:3000/#/')
+  alert('Payment Successful')
 };
 
 const errorPayment = data => {
-  alert('Payment Error');
+  window.location.assign('http://localhost:3000/#/')
 };
 
 const onToken = (amount, description, email) => token =>
@@ -39,5 +38,6 @@ const Checkout = ({ name, description, amount, email }) =>{
     currency={CURRENCY}
     stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE}
   />)}
+
 
 export default Checkout;

@@ -1,0 +1,23 @@
+.orders_container{
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100w;
+}
+.order_selectors{
+  margin-left: 37.5vw;
+  height:15vh;
+  width: 10vw;
+}
+.order_lines{
+  width: 90vw;
+}
+order_line{
+  display: flex;
+}
+report_input_button{
+  height: 10vh;
+}
+.Dropdown-root{
+  width: 15vw;
+}

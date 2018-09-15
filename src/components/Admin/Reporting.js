@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
+import BarChart from './BarChart'
 import AdminNav from './AdminNav'
 
 
-class Admin extends Component{
+class Reporting extends Component{
   constructor(){
     super()
   }
@@ -16,6 +17,7 @@ class Admin extends Component{
     return(
       <div>
         <AdminNav/>
+        <BarChart/>
       </div>
     )
   }
@@ -23,4 +25,4 @@ class Admin extends Component{
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Admin)
+export default connect(mapStateToProps)(Reporting)

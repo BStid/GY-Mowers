@@ -14,6 +14,8 @@ import FilteredSales from './components/Sales/FilteredSales'
 import ConfirmService from './components/Service/ConfirmService'
 import CheckoutScreen from './components/Checkout/CheckoutScreen'
 import Admin from './components/Admin/Admin'
+import Reporting from './components/Admin/Reporting'
+import Orders from './components/Admin/Orders'
 
 export default(
   <Switch>
@@ -31,5 +33,7 @@ export default(
     <Route component={ConfirmService} path='/confirmservice'/>
     <Route component={CheckoutScreen} path='/checkout'/>
     <Route component={Admin} path='/admin'/>
+    <Route component={Reporting} path='/reports'/>
+    <Route component={Orders} path='/orders'/>
   </Switch>
 )

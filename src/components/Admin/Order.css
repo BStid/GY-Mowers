@@ -1,0 +1,18 @@
+.order_link{
+  text-decoration: none;
+  color: white;
+}
+.order_line{
+  display: flex;
+  flex-wrap: wrap;
+  width: 95vw;
+  background-color: #f1c116;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.order_element{
+  color:black;
+  width: 20vw;
+  margin: 0;
+  padding: 1;
+}

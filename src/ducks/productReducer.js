@@ -6,6 +6,7 @@ const initialState = {
   mowers: [],
   blades: [],
   cart: [],
+  orders: [],
   serviceApts: [],
   isLoading: false,
   serviceDate: moment(),
@@ -30,6 +31,7 @@ const SET_USER_INFO = 'SET_USER_INFO'
 const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL'
 const LOGOUT = 'LOGOUT'
 const CLEAR_CART = 'CLEAR_CART'
+const SET_ORDERS = 'SET_ORDERS'
 
 export default function(state = initialState, action){
   switch (action.type) {
@@ -130,9 +132,21 @@ export default function(state = initialState, action){
         cart: [],
         user: {}
       }
+    }case SET_ORDERS:{
+      return{
+        ...state,
+        orders: action.payload
+      }
     }
     default:
       return state;
+  }
+}
+
+export function setOrders(orders){
+  return{
+    type: SET_ORDERS,
+    payload: orders
   }
 }
 export function clearCart(){

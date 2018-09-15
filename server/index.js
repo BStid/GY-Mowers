@@ -13,7 +13,7 @@ const {getAllMowers, getAllBlades, getMowerBrand} = require('./controllers/produ
 const {addToCart, getCart, deleteFromCart, addOrder} = require('./controllers/cartCtrl')
 const {setServiceApt} = require('./controllers/serviceCtrl')
 const {getUser, logout, addUserInfo} = require('./controllers/loginCtrl')
-const {getSkuReport, getDailyReport} = require('./controllers/reportCtrl')
+const {getSkuReport, getDailyReport, getOrders} = require('./controllers/reportCtrl')
 const app = express()
 app.use(json())
 
@@ -105,6 +105,7 @@ app.post('/api/order', addOrder)
 //REPORT ENDPOINTS
 app.post('/api/skureport', getSkuReport)
 app.post('/api/dailyreport', getDailyReport)
+app.post('/api/orders', getOrders)
 
 //MAIL ENDPOINTS
 app.post('/api/send', function(req, res, next) {
