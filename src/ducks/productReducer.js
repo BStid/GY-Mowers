@@ -7,6 +7,7 @@ const initialState = {
   blades: [],
   cart: [],
   orders: [],
+  requests: [],
   serviceApts: [],
   isLoading: false,
   serviceDate: moment(),
@@ -32,6 +33,7 @@ const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL'
 const LOGOUT = 'LOGOUT'
 const CLEAR_CART = 'CLEAR_CART'
 const SET_ORDERS = 'SET_ORDERS'
+const SET_REQUESTS = 'SET_REQUESTS'
 
 export default function(state = initialState, action){
   switch (action.type) {
@@ -137,9 +139,21 @@ export default function(state = initialState, action){
         ...state,
         orders: action.payload
       }
+    }case SET_REQUESTS:{
+      return{
+        ...state,
+        requests: action.payload
+      }
     }
     default:
       return state;
+  }
+}
+
+export function setRequests(requests){
+  return{
+    type: SET_REQUESTS,
+    payload: requests
   }
 }
 
@@ -168,6 +182,7 @@ export function updateTotal(total){
 }
 
 export function setUserInfo(authid, first, last, address, zip, state, email, phone, message){
+  console.log(authid, first, last, address, zip, state, email, phone, message)
   return{
     type: SET_USER_INFO,
     payload: axios.post('/api/user', {authid, first, last, address, zip, state, email, phone, message})

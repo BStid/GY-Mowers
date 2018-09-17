@@ -27,7 +27,6 @@ class ServiceInfo extends Component{
 
   render(){
     let{first, last, address, zip, state, email, phone, message} = this.state;
-    console.log(this.props, this.props.user.authid)
     return(
       <div>
         <input onChange={e => this.setState({first: e.target.value})} placeholder={this.props.user.first_name ? this.props.user.first_name : 'First Name'}></input>

@@ -1,0 +1,1 @@
+UPDATE service SET complete = true WHERE service_id = $1;

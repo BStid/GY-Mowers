@@ -31,7 +31,6 @@ class Orders extends Component{
     .then(response => orders = response.data).catch(err => (console.log(err)))
     let grouped = this.formatOrders(orders)
     this.setState({orders: grouped})
-    console.log(this.state.orders)
     this.props.setOrders(this.state.orders)
   }
 
@@ -39,7 +38,7 @@ class Orders extends Component{
     let finalData = []
     let order = []
     let count = 0
-    orders.map((e)=> {
+    orders.map((e,i)=> {
       if(order.length === 0){
         order.push(e)
       }else if(e.order_number === order[count].order_number){
@@ -49,6 +48,10 @@ class Orders extends Component{
         finalData.push(order)
         order = []
         count = 0
+        order.push(e) 
+      }
+      if((i+1) === orders.length){
+        finalData.push(order)
       }
     })
     return finalData;
@@ -57,7 +60,6 @@ class Orders extends Component{
   render(){
     const options = ['Completed Orders', 'Pending Orders']
     const defaultOption = options[0]
-    console.log(this.state.orders)
     return(
       <div className='orders_container'>
         <AdminNav/>

@@ -6,8 +6,8 @@ import './Order.css'
 
 
 class Order extends Component{
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
   }
 
   componentDidMount(){
@@ -21,7 +21,7 @@ class Order extends Component{
         <div  key={i} className='order_line'>
          <p className='order_element'>{`Customer Name: ${e[0].first_name} ${e[0].last_name}`}</p>
          <Link className='order_element' style={{ textDecoration: 'none' }} to={`/orderdetails/${e[0].order_number}`}><h4 className='order_element' style={{ textDecoration: 'none' }}>{`Order Number: ${e[0].order_number}`}</h4></Link>
-          <p className='order_element'>{`Order Date: ${e[0].order_date}`}</p>
+          <p className='order_element'>{`Order Date: ${e[0].order_date.slice(0, 10)}`}</p>
         </div>
       )}):null
     return(

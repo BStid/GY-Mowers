@@ -16,6 +16,9 @@ import CheckoutScreen from './components/Checkout/CheckoutScreen'
 import Admin from './components/Admin/Admin'
 import Reporting from './components/Admin/Reporting'
 import Orders from './components/Admin/Orders'
+import OrderDetails from './components/Admin/OrderDetails'
+import ServiceRequests from './components/Admin/ServiceRequests'
+import RequestDetails from './components/Admin/RequestDetails'
 
 export default(
   <Switch>
@@ -35,5 +38,8 @@ export default(
     <Route component={Admin} path='/admin'/>
     <Route component={Reporting} path='/reports'/>
     <Route component={Orders} path='/orders'/>
+    <Route component={OrderDetails} path='/orderdetails/:id'/>
+    <Route component={ ServiceRequests }  path='/requests'/>
+    <Route component={RequestDetails} path='/requestdetails/:id'/>
   </Switch>
 )

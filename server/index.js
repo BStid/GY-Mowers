@@ -13,7 +13,7 @@ const {getAllMowers, getAllBlades, getMowerBrand} = require('./controllers/produ
 const {addToCart, getCart, deleteFromCart, addOrder} = require('./controllers/cartCtrl')
 const {setServiceApt} = require('./controllers/serviceCtrl')
 const {getUser, logout, addUserInfo} = require('./controllers/loginCtrl')
-const {getSkuReport, getDailyReport, getOrders} = require('./controllers/reportCtrl')
+const {getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails} = require('./controllers/reportCtrl')
 const app = express()
 app.use(json())
 
@@ -87,6 +87,7 @@ app.delete('/api/cart/:id' , deleteFromCart)
 
 //SERVICE ENDPOINTS
 app.post('/api/service', setServiceApt)
+app.post('/api/requestdetails', requestDetails)
 
 //LOGIN ENDPOINTS
 app.get('/login', passport.authenticate('auth0', {
@@ -101,11 +102,15 @@ app.get('/api/logout', logout);
 
 //ORDERS ENDPOINTS
 app.post('/api/order', addOrder)
+app.post('/api/orderdetails', orderDetails)
 
 //REPORT ENDPOINTS
 app.post('/api/skureport', getSkuReport)
 app.post('/api/dailyreport', getDailyReport)
 app.post('/api/orders', getOrders)
+app.put('/api/orderdetails', confirmOrder)
+app.post('/api/requests', getRequests)
+app.put('/api/requestdetails', confirmRequest)
 
 //MAIL ENDPOINTS
 app.post('/api/send', function(req, res, next) {

@@ -41,7 +41,8 @@ class AdminNav extends Component{
         items={[
           <Link style={{ textDecoration: 'none' }} to='/admin'><div className='dash_button' >Admin Home</div></Link>,
           <Link style={{ textDecoration: 'none' }} to='/reports'><div className='dash_button'>Reports</div></Link>,
-          <Link style={{ textDecoration: 'none' }} to='/orders'><div className='dash_button'>Orders</div></Link>,
+          <Link style={{ textDecoration: 'none' }} to='/orders'><div className='dash_button'>Sales Orders</div></Link>,
+          <Link style={{ textDecoration: 'none' }} to='/requests'><div className='dash_button'>Service Requests</div></Link>,
           <div className='dash_button' onClick={()=>{
             var myWindow = window.open('https://gy162134.auth0.com/v2/logout')
             myWindow.close()

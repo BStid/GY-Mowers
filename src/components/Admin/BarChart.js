@@ -24,6 +24,7 @@ class BarChart extends Component{
   
 generateData(time, reportChoice, skus){
   if(reportChoice === 'Gross sales by Day'){
+    console.log(time)
     this.generateDailySales(time)
   }else if(reportChoice === 'Top Sales by sku'){
     this.generateSkuSales(time, skus)
