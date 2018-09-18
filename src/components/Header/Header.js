@@ -24,23 +24,19 @@ class Header extends Component {
     if(this.props.user && this.props.user.is_admin){
       window.location.href = 'http://localhost:3000/#/admin'
     }else if(this.props.user && this.props.user.authid){
-      var myWindow = window.open('https://gy162134.auth0.com/v2/logout')
-      myWindow.close()
-      this.props.logout()
-      window.location.href = 'http://localhost:3000/#/'
-      window.location.reload(false);
+      this.props.logout().then(() => window.location.href = 'http://localhost:3000/#/');
     }else{
-      window.location.href = 'http://localhost:3001/login'
+      window.location.href = 'http://localhost:3001/login?path='
     }
   }
 
   render(){
-    
+    console.log('RENDER', this.props)
     let redirect = ''
-    if(this.props.user && this.props.user.authid){
+    if(this.props.user && this.props.user.authid) {
       redirect = 'http://localhost:3000/#/service'
     }else{
-      redirect = 'http://localhost:3001/login'
+      redirect = 'http://localhost:3001/login?path=service'
     }
     return(
       <div className='header'>

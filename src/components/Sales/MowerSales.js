@@ -3,12 +3,24 @@ import {connect} from 'react-redux'
 import {getMowers} from '../../ducks/productReducer'
 import MowerCards from '../Cards/MowerCards'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 import '../Cards/Cards.css'
 
 class MowerSales extends Component{
+  constructor(){
+    super()
+
+    this.toggleShow = this.toggleShow.bind(this)
+  }
 
   componentDidMount(){
     this.props.getMowers()
+  }
+
+  toggleShow(id, status){
+    axios.put('/api/products', {id: id, status: status})
+    .then(response => this.props.getMowers())
+    .catch(err => console.log(err))
   }
 
   render(){
@@ -23,7 +35,7 @@ class MowerSales extends Component{
           </div>
           <h1 className='top_bar_content'>{`All Mowers`}</h1>
         </div>
-          <div ><MowerCards mowers={this.props.mowers}/></div>
+          <div ><MowerCards toggleShow={this.toggleShow} mowers={this.props.mowers} user={this.props.user}/></div>
       </div>
     )
   }
@@ -31,7 +43,8 @@ class MowerSales extends Component{
 
 function mapStateToProps(state){
   return{
-    mowers: state.mowers
+    mowers: state.mowers,
+    user: state.user
   }
 }
 

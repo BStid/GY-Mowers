@@ -95,6 +95,12 @@ export default function(state = initialState, action){
       user: action.payload.data,
       loggedOut: false
     };
+    case `${GET_USER}_REJECTED`:
+      return {
+        ...state,
+        user: {},
+        loggedOut: true
+      }
     case `${DELETE_CART_ITEM}_FULFILLED`:
     return{
       ...state,
@@ -127,8 +133,8 @@ export default function(state = initialState, action){
           ...state,
           cart: []
         }
-    }case LOGOUT:{
-      return{
+    }case `${LOGOUT}_FULFILLED`:{
+      return {
         ...state,
         loggedOut: true,
         cart: [],
@@ -172,7 +178,7 @@ export function clearCart(){
 export function logout(){
   return{
     type: LOGOUT,
-    payload: axios('/api/logout').then(res => console.log(res))}
+    payload: axios('/api/logout')}
 }
 export function updateTotal(total){
   return{
@@ -182,7 +188,6 @@ export function updateTotal(total){
 }
 
 export function setUserInfo(authid, first, last, address, zip, state, email, phone, message){
-  console.log(authid, first, last, address, zip, state, email, phone, message)
   return{
     type: SET_USER_INFO,
     payload: axios.post('/api/user', {authid, first, last, address, zip, state, email, phone, message})

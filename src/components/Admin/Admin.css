@@ -1,0 +1,47 @@
+.admin_dash{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: black;
+}
+.admin_container{
+  border: 1px solid white;
+  width: 30vw;
+  height: 40vh;
+  color: white;
+  display: table;
+  text-align: center;
+}
+.dash_title{
+  font-size: 3em;
+  width: 100vw;
+  margin-bottom: 1vh;
+  margin-top: 0;
+}
+.dash_info_line{
+  font-size: 15em;
+}
+.dash_info_today{
+  margin-top: 5vh;
+  font-size: 5em;
+}
+.today{
+  font-size: 3em;
+}
+.box_title{
+  color: white;
+}
+#red{
+  color: red;
+}
+#yellow{
+  color: yellow;
+}
+#green{
+  color: green;
+}
+.dash_graph_container{
+  width: 80vw;
+  height: 40vh;
+  margin: auto;
+}

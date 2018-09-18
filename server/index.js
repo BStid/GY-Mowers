@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const {json} = require('body-parser')
+const { json } = require('body-parser')
 const massive = require('massive')
 const session = require('express-session')
 const passport = require('passport');
@@ -9,12 +9,12 @@ const nodemailer = require('nodemailer');
 const cors = require('cors')
 const path = require('path')
 const configureRoutes = require('./stripe')
-const {getAllMowers, getAllBlades, getMowerBrand} = require('./controllers/productCtrl')
-const {addToCart, getCart, deleteFromCart, addOrder} = require('./controllers/cartCtrl')
-const {setServiceApt} = require('./controllers/serviceCtrl')
-const {getUser, logout, addUserInfo} = require('./controllers/loginCtrl')
-const {getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails} = require('./controllers/reportCtrl')
-const {addRating, getRating, getReviews, addReview} = require('./controllers/ratingCtrl')
+const { getAllMowers, getAllBlades, getMowerBrand, toggleShow } = require('./controllers/productCtrl')
+const { addToCart, getCart, deleteFromCart, addOrder } = require('./controllers/cartCtrl')
+const { setServiceApt } = require('./controllers/serviceCtrl')
+const { getUser, logout, addUserInfo } = require('./controllers/loginCtrl')
+const { getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails } = require('./controllers/reportCtrl')
+const { addRating, getRating, getReviews, addReview } = require('./controllers/ratingCtrl')
 const app = express()
 app.use(json())
 
@@ -27,21 +27,21 @@ configureServer(app)
 configureRoutes(app);
 
 massive(process.env.CONNECTION_STRING)
-.then(db => {app.set('db', db)})
-.catch(err => console.log(err))
+  .then(db => { app.set('db', db) })
+  .catch(err => console.log(err))
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 3 * 60 * 1000
-    }
-  })
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 3 * 60 * 1000
+  }
+})
 );
 
-app.use( passport.initialize() );
-app.use( passport.session() );
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(strategy)
 
 passport.serializeUser((profile, done) => {
@@ -71,7 +71,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  if(!req.session.path) req.session.path = [];
+  if (!req.session.path) req.session.path = [];
   next();
 })
 
@@ -80,11 +80,12 @@ app.use((req, res, next) => {
 app.get('/api/mowers', getAllMowers)
 app.get('/api/filteredmowers/:brand', getMowerBrand)
 app.get('/api/blades', getAllBlades)
+app.put('/api/products', toggleShow)
 
 //CART ENDPOINTS
 app.get('/api/cart', getCart);
 app.post('/api/cart', addToCart);
-app.delete('/api/cart/:id' , deleteFromCart)
+app.delete('/api/cart/:id', deleteFromCart)
 
 //SERVICE ENDPOINTS
 app.post('/api/service', setServiceApt)
@@ -96,11 +97,23 @@ app.post('/api/rating', addRating)
 app.get(`/api/reviews/:id`, getReviews)
 app.post('/api/reviews', addReview)
 
+// , {
+//   // successRedirect: `http://localhost:3000/#/${req.session.pathRedirect}`,
+// failureRedirect: 'http://localhost:3000/#/'
+// }
 //LOGIN ENDPOINTS
-app.get('/login', passport.authenticate('auth0', {
-  successRedirect: 'http://localhost:3000/#/',
-  failureRedirect: 'http://localhost:3001/#/'
-}));
+app.get('/login', (req, res, next) => {
+  if (req.query.path) {
+    app.locals.pathRedirect = req.query.path;
+  }
+  next();
+},
+  passport.authenticate('auth0'),
+  (req, res) => {
+    app.locals.pathRedirect ? 
+    res.redirect(`http://localhost:3000/#/${app.locals.pathRedirect}`): 
+    res.redirect(`http://localhost:3000/#/`)  
+  });
 
 //USER ENDPOINTS
 app.post('/api/user', addUserInfo);
@@ -120,7 +133,7 @@ app.post('/api/requests', getRequests)
 app.put('/api/requestdetails', confirmRequest)
 
 //MAIL ENDPOINTS
-app.post('/api/send', function(req, res, next) {
+app.post('/api/send', function (req, res, next) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -135,7 +148,7 @@ app.post('/api/send', function(req, res, next) {
     text: `${req.body.message}`,
     replyTo: `${process.env.EMAIL}`
   }
-  transporter.sendMail(mailOptions, function(err, res) {
+  transporter.sendMail(mailOptions, function (err, res) {
     if (err) {
       console.error('there was an error: ', err);
     } else {
@@ -153,9 +166,9 @@ app.post('/api/sendsms', (req, res) => {
     body: req.body.message
   }, function (err, responseData) {
     if (!err) {
-      res.json({"From": responseData.from, "Body": responseData.body});
+      res.json({ "From": responseData.from, "Body": responseData.body });
     }
   })
 })
 
-app.listen(process.env.SERVER_PORT, ()=> console.log(`listening on port ${process.env.SERVER_PORT}`))
+app.listen(process.env.SERVER_PORT, () => console.log(`listening on port ${process.env.SERVER_PORT}`))

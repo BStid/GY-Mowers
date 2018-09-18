@@ -5,6 +5,7 @@ import {handleCartDelete, getCart, updateTotal, clearCart} from '../../ducks/pro
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
+import Checkout from '../Checkout/Checkout'
 import {
   Table,
   TableBody,
@@ -49,12 +50,7 @@ class Cart extends Component{
   }
 
   render(){
-    let redirect = ''
-    if(this.props.user && this.props.user.authid){
-      redirect = 'http://localhost:3000/#/checkout'
-    }else{
-      redirect = 'http://localhost:3001/login'
-    }
+    console.log(this.props)
     if(this.props.cart.length > 0){
       var total = this.props.cart.map(item => parseFloat(item.price)).reduce(((prev, next) => prev + next),0);
       this.props.updateTotal(total)
@@ -97,13 +93,14 @@ class Cart extends Component{
               </TableRow>
             </TableBody>
           </Table>
-        </MuiThemeProvider> 
-        <a href={redirect}><button onClick={() =>
-           {if(this.props.user && this.props.user.authid){
-             this.addOrderToDB(this.props.cart, this.props.user.user_id, this.state.date.format('LL'))
+        </MuiThemeProvider>
+
+        {this.props.user && this.props.user.authid ?  <div onClick={() =>{
+            this.addOrderToDB(this.props.cart, this.props.user.user_id, this.state.date.format('LL'))
              setTimeout(this.sendPurchaseEmail, 15000, this.props.user.email)
              this.props.clearCart()
-           }}}>Checkout</button></a>
+           }}><Checkout name={'GY Mowers'} description={''} amount={this.props.cartTotal} email={this.props.user.email}/> </div>:
+           <a href='http://localhost:3001/login?path=cart'><button>Login To Checkout</button></a>}
       </div>: 
         <div className='no_items'>
           <h1>No Items In Cart</h1>

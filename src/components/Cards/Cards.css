@@ -40,3 +40,9 @@
     width: 100%;
     text-align: center;
 }
+.toggle_container{
+  width: 100%;
+}
+.toggle_button{
+  width: 7vw;
+}

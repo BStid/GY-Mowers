@@ -16,10 +16,17 @@ function getAllBlades(req, res){
   .catch(err => res.status(500)
   .send(err => console.log('something went wrong', err)))
 }
+function toggleShow(req, res){
+  const db = req.app.get('db')
+  db.toggle_show([req.body.id, req.body.status]).then(response => res.status(200).send(response))
+  .catch(err => res.status(500)
+  .send(err => console.log('something went wrong', err)))
+}
 
 
 module.exports = {
   getAllMowers,
   getAllBlades,
-  getMowerBrand
+  getMowerBrand,
+  toggleShow
 }

@@ -27,11 +27,11 @@ class Reviews extends Component{
   }
 
   render(){
-    console.log(this.state.reviews)
+    console.log(this.state)
     let reviewBox = this.state.reviews.map(e => {
       return(
         <div className='review_box'>
-          <div className='cust_info'>{`${e.first_name} in ${e.state}:`}</div>
+          <div className='cust_info'>{`${e.first_name} in ${e.state.toUpperCase()}:`}</div>
           <div className='cust_comment'>{e.comment}</div>
         </div>
       )
