@@ -7,7 +7,7 @@ class About extends Component{
     return(
       <div className='about_page'>
         <div className='header_container'>
-          <img alt='about banner' className='banner_pic' src='http://newportavelandscaping.com/wp-content/uploads/2015/12/newport-ave-landscaping-about-us-1440x528.jpg'/>
+          <div className='banner_pic' />
           <h1 className='about_us'>About Us</h1>
         </div>
         <div className='left_about'>

@@ -1,6 +1,27 @@
 .backdrop{
-  height: 20vh;
-  width: 40vw;
-  background-color: slategray;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  height: 80vh;
+  width: 70vw;
+  opacity: 1;
+  background-color: black;
   color:  #f1c116;
+}
+.modal{
+  height: 100%;
+  width:100%;
+  position: relative;
+  border: 2px solid #f1c116;
+}
+.close_modal{
+  position: absolute;
+  background: none;
+  border: none;
+  color: #f1c116;
+  font-size: 2em;
+  top: 0;
+  left: 0;
 }

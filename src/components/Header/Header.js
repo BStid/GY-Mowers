@@ -27,6 +27,7 @@ class Header extends Component {
       var myWindow = window.open('https://gy162134.auth0.com/v2/logout')
       myWindow.close()
       this.props.logout()
+      window.location.href = 'http://localhost:3000/#/'
       window.location.reload(false);
     }else{
       window.location.href = 'http://localhost:3001/login'

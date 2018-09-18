@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import './Details.css'
 import ReactPlayer from 'react-player'
 import {addToCart} from '../../ducks/productReducer'
+import StarRating from '../StarRating/StarRating'
+import Reviews from '../Reviews/Reviews'
 import Modal from '../Modal/Modal'
 
 class Details extends Component{
@@ -19,6 +21,7 @@ class Details extends Component{
   }
 
   render(){
+    console.log(this.props)
     let deets =''
     if(this.props.match.params.type === "blade"){
       deets = this.props.blades.map(blade => {
@@ -32,12 +35,10 @@ class Details extends Component{
                 <h1>{blade.title}</h1>
                 <div className='price'>{`$${blade.price}`}</div>
                 <p className='desc'>{blade.description}</p>
-                <button className='cart_button' onClick={() =>{ 
-                  this.props.addToCart(blade)
-                  this.toggleModal()}
-                  }>Add To Cart</button>
+                <button className='cart_button' onClick={() =>this.props.addToCart(blade)}>Add To Cart</button>
+                <StarRating id={this.props.match.params.id} user={this.props.user.user_id}/>
               </div>
-              {/* <Modal show={this.state.isOpen} onClose={this.toggleModal}>Item added to cart!!</Modal> */}
+              <Modal show={this.state.isOpen} onClose={this.toggleModal}><Reviews id={this.props.match.params.id} user={this.props.user.user_id}/></Modal>
             </div>
           )
         }})
@@ -54,7 +55,10 @@ class Details extends Component{
                 <div className='price'>{`$${mower.price}`}</div>
                 <p className='desc'>{mower.description}</p>
                 <button className='cart_button' onClick={() => this.props.addToCart(mower)}>Add To Cart</button>
+                <StarRating id={this.props.match.params.id} user={this.props.user.user_id}/>
+                <div className='review_line'>click <span onClick={() => this.toggleModal()} className='review_word'>here</span> to see customer reviews of this product</div>
               </div> 
+              <Modal show={this.state.isOpen} onClose={this.toggleModal}><Reviews id={this.props.match.params.id} user={this.props.user.user_id}/></Modal>
               <div className='vid_box'>
                 {mower.brand === 'Hustler' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=AYMU9TWWYxM' playing={true}/></div> : 
                  mower.brand === 'Spartan' ? <div className='video'><ReactPlayer url='https://www.youtube.com/watch?v=Zzh_GsgJBlw' playing={true}/></div> :
@@ -77,7 +81,8 @@ function mapStateToProps(state){
   return{
     mowers: state.mowers,
     blades: state.blades,
-    cart: state.cart
+    cart: state.cart,
+    user: state.user
   }
 }
 

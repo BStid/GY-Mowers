@@ -14,6 +14,7 @@ const {addToCart, getCart, deleteFromCart, addOrder} = require('./controllers/ca
 const {setServiceApt} = require('./controllers/serviceCtrl')
 const {getUser, logout, addUserInfo} = require('./controllers/loginCtrl')
 const {getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails} = require('./controllers/reportCtrl')
+const {addRating, getRating, getReviews, addReview} = require('./controllers/ratingCtrl')
 const app = express()
 app.use(json())
 
@@ -88,6 +89,12 @@ app.delete('/api/cart/:id' , deleteFromCart)
 //SERVICE ENDPOINTS
 app.post('/api/service', setServiceApt)
 app.post('/api/requestdetails', requestDetails)
+
+//REVIEW ENDPOINTS
+app.get(`/api/rating/:id`, getRating)
+app.post('/api/rating', addRating)
+app.get(`/api/reviews/:id`, getReviews)
+app.post('/api/reviews', addReview)
 
 //LOGIN ENDPOINTS
 app.get('/login', passport.authenticate('auth0', {

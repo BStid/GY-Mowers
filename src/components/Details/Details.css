@@ -4,6 +4,7 @@
 .details_content{
 display: flex;
 flex-wrap: wrap;
+position: relative;
 }
 .left_side{
 width: 40vw;
@@ -31,6 +32,7 @@ font-size: 2em;
 .cart_button{
 height: 7vh;
 width: 13vw;
+margin-bottom: 3vh;
 }
 .video{
   display: flex;
@@ -46,4 +48,14 @@ iframe{
   width: 50vw;
   margin-left: 20vw;
   margin-top: 5vh;
+}
+.review_line{
+  margin-top: 0;
+}
+.review_word{
+  font-weight: bold;
+  color: #f1c116;
+}
+.review_word:hover{
+  cursor: pointer;
 }

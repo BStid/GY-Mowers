@@ -1,0 +1,27 @@
+.input_comps{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 4vh;
+}
+.review_submit{
+  width: 10vw;
+  height: 4vh;
+  margin-top: 3vh;
+}
+.review_box{
+  padding: 3vh;
+  display: flex;
+  border: 1px solid #f1c116;
+  color: white;
+}
+.cust_info{
+  width: 30vw;
+}
+.cust_comment{
+  width: 60vw;
+}
+.text_box_review{
+  margin-right: 0;
+  margin-left: 7vw;
+}
