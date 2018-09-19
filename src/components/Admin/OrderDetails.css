@@ -1,8 +1,21 @@
 .order_details_content{
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10vh;
+  padding-top: 10vh;
+  background: black;
+  text-align: center;
 }
-order_details_info{
-
+.order_details_element{
+  color: #f1c116;
+}
+.order_details_info{
+  margin: auto;
+}
+.order_details_submit{
+  width: 100%;
+}
+.little_white_line{
+  margin: auto;
+  border: solid white 1px;
+  padding: 2vw;
 }

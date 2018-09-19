@@ -51,10 +51,10 @@ class OrderDetails extends Component{
          {if(index === 0){
            return(
             <div>
-              <p className='order_element'>{`Customer Name: ${element.first_name} ${element.last_name}`}</p>
-              <p className='order_element'>{`Address: ${element.address}, ${element.state} ${element.zip}`}</p>
-              <p className='order_element'>{`Email: ${element.email}`}</p>
-              <p className='order_element'>{`Phone Number: : ${element.phone}`}</p>
+              <p className='order_details_element'>{`Customer Name: ${element.first_name} ${element.last_name}`}</p>
+              <p className='order_details_element'>{`Address: ${element.address}, ${element.state} ${element.zip}`}</p>
+              <p className='order_details_element'>{`Email: ${element.email}`}</p>
+              <p className='order_details_element'>{`Phone Number: : ${element.phone}`}</p>
             </div>
         )}
       })
@@ -63,20 +63,22 @@ class OrderDetails extends Component{
     this.state.order.data ? orderItems = this.state.order.data.map((e, i) => {
       return(
         <div>
-          <p>{`Line ${i+1}:   ${e.title}   ${e.price}`}</p>
+          <p className='order_details_element'>{`Line ${i+1}:   ${e.title}   ${e.price}`}</p>
         </div>
       )
     }):null
     return(
       <div className='order_details_content'>
         <AdminNav/>
-        <div className='order_details_info'>
-          {customerDeets}
-          {orderItems}
-        </div>
-        <div>
-          <input placeholder='Enter Tracking #' onChange={e => this.setState({tracking: e.target.value})}></input>
-          <button onClick={() => this.confirmOrder(this.state.tracking)}>Confirm Order</button>
+        <div className='little_white_line'>
+          <div className='order_details_info'>
+            {customerDeets}
+            {orderItems}
+          </div>
+          <div className='order_details_submit'>
+            <input placeholder='Enter Tracking #' onChange={e => this.setState({tracking: e.target.value})}></input>
+            <button onClick={() => this.confirmOrder(this.state.tracking)}>Confirm Order</button>
+          </div>
         </div>
       </div>
     )

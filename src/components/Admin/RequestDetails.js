@@ -44,10 +44,10 @@ class RequestDetails extends Component{
       if(e.service_id === parseInt(this.props.match.params.id)){
         return(
           <div>
-            <p className='order_element'>{`Customer Name: ${e.first_name} ${e.last_name}`}</p>
-            <p className='order_element'>{`Address: ${e.address}, ${e.state} ${e.zip}`}</p>
-            <p className='order_element'>{`Email: ${e.email}`}</p>
-            <p className='order_element'>{`Phone Number: : ${e.phone}`}</p>
+            <p className='order_details_element'>{`Customer Name: ${e.first_name} ${e.last_name}`}</p>
+            <p className='order_details_element'>{`Address: ${e.address}, ${e.state} ${e.zip}`}</p>
+            <p className='order_details_element'>{`Email: ${e.email}`}</p>
+            <p className='order_details_element'>{`Phone Number: : ${e.phone}`}</p>
           </div>
         )
       }
@@ -55,19 +55,21 @@ class RequestDetails extends Component{
     this.state.order.data ? orderItems = this.state.order.data.map((e, i) => {
       return(
         <div>
-          <p>{`Service Details:   ${e.issue}`}</p>
+          <p className='order_details_element'>{`Service Details:   ${e.issue}`}</p>
         </div>
       )
     }):null
     return(
       <div className='order_details_content'>
         <AdminNav/>
-        <div className='order_details_info'>
-          {customerDeets}
-          {orderItems}
-        </div>
-        <div>
-          <button onClick={() => this.confirmOrder()}>Complete Service</button>
+        <div className='little_white_line'>
+          <div className='order_details_info'>
+            {customerDeets}
+            {orderItems}
+          </div>
+          <div>
+            <button onClick={() => this.confirmOrder()}>Complete Service</button>
+          </div>
         </div>
       </div>
     )

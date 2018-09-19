@@ -33,14 +33,13 @@ class Admin extends Component{
     .then(response => this.countOrders(response.data))
     .catch(err => (console.log(err)))
 
-    this.generateSkuSales('1', '5')
+    this.generateSkuSales('1', '10')
   }
 
   async generateSkuSales(time, skus){
     var labels = []
     var data = []
    await axios.post('/api/skureport', {time, skus}).then(res => {
-     console.log(res)
     res.data.map((e, i) => {
       labels.push(this.makeStringArray(e.title))
       data.push(parseInt(e.count))

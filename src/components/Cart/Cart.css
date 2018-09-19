@@ -5,12 +5,13 @@
   color: #f1c116;
 }
 .cart_banner{
-  background: #f1c116;
+  background: -webkit-linear-gradient(230deg, #000000 0%, #EDBE15 45%, #D1A813 56%, #000000 100%);
   width: 100%;
   height: 15vh;
   margin: 0;
 }
 .banner_text{
+  color: black;
   margin: 0;
   padding-top: 5vh;
 }

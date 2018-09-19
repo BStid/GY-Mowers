@@ -9,7 +9,7 @@ class BladeCards extends Component{
     return(
       <div key={i} className='sales_card'>
         <img alt='blade' className='card_image' src={blade.img}></img>
-        <Link to={`/details/${blade.product_type}/${blade.product_id}`}> <h4>{blade.title}</h4></Link>
+        <Link to={`/details/${blade.product_type}/${blade.product_id}`}> <h4 className='product_title'>{blade.title}</h4></Link>
         <p>${blade.price}</p>
       </div>
   )})

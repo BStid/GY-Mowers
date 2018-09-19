@@ -97,11 +97,7 @@ app.post('/api/rating', addRating)
 app.get(`/api/reviews/:id`, getReviews)
 app.post('/api/reviews', addReview)
 
-// , {
-//   // successRedirect: `http://localhost:3000/#/${req.session.pathRedirect}`,
-// failureRedirect: 'http://localhost:3000/#/'
-// }
-//LOGIN ENDPOINTS
+//LOGIN ENDPOINT
 app.get('/login', (req, res, next) => {
   if (req.query.path) {
     app.locals.pathRedirect = req.query.path;
@@ -113,6 +109,7 @@ app.get('/login', (req, res, next) => {
     app.locals.pathRedirect ? 
     res.redirect(`http://localhost:3000/#/${app.locals.pathRedirect}`): 
     res.redirect(`http://localhost:3000/#/`)  
+    app.locals.pathRedirect = null
   });
 
 //USER ENDPOINTS

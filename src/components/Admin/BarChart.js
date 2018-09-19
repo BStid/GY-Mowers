@@ -24,7 +24,6 @@ class BarChart extends Component{
   
 generateData(time, reportChoice, skus){
   if(reportChoice === 'Gross sales by Day'){
-    console.log(time)
     this.generateDailySales(time)
   }else if(reportChoice === 'Top Sales by sku'){
     this.generateSkuSales(time, skus)
@@ -36,7 +35,6 @@ async generateSkuSales(time, skus){
   var pieLabels = []
   var data = []
  await axios.post('/api/skureport', {time, skus}).then(res => {
-   console.log(res)
   res.data.map((e, i) => {
     labels.push(this.makeStringArray(e.title))
     pieLabels.push(e.title)
@@ -44,7 +42,6 @@ async generateSkuSales(time, skus){
     return ''
   })
 }).catch(err => console.log(err))
-console.log(pieLabels)
 this.setState({data:{
   labels: labels,
   datasets: [{
@@ -192,8 +189,6 @@ async generateDailySales(time){
   render(){
     const options = ['Top Sales by sku', 'Gross sales by Day']
     const defaultOption = options[0]
-    console.log(this.state);
-    
     return(
       <div className='reporting_content'>
           <div className='filter_options'>

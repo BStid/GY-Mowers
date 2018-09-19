@@ -1,0 +1,9 @@
+.calendar_container{
+  background: black;
+  padding-top: 4vh;
+  height: 80vh;
+  z-index: 10;
+}
+.rbc-calendar{
+  background: white;
+}

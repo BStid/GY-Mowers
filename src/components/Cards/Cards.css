@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  background: black;
 }
 .filtered_top_bar{
   width: 70vw;
@@ -16,15 +17,23 @@
   width: 30vw;
 }
 .item{
+  text-decoration: none;
+  color: #f1c116;
   margin: 0;
+}
+.item:hover{
+  color: white;
 }
 .top_bar_links{
   width: 20vw;
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color: #f1c116;
 }
 .sales_card{
-  border: 1px solid slategray;
+  background: white;
+  border: 1px solid #f1c116;
   width: 19vw;
   margin: 2vw;
 }
@@ -45,4 +54,8 @@
 }
 .toggle_button{
   width: 7vw;
+}
+.product_title{
+  text-decoration: none;
+  color: black;
 }

@@ -8,7 +8,6 @@ import '../Cards/Cards.css'
 class FilteredSales extends Component{
 
   componentDidMount(){
-    console.log(this.props.match.params.brand)
     this.props.getFilteredMowers(this.props.match.params.brand)
   }
 

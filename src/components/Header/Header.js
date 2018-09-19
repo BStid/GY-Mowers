@@ -31,7 +31,6 @@ class Header extends Component {
   }
 
   render(){
-    console.log('RENDER', this.props)
     let redirect = ''
     if(this.props.user && this.props.user.authid) {
       redirect = 'http://localhost:3000/#/service'

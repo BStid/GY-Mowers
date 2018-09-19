@@ -18,6 +18,7 @@ import Orders from './components/Admin/Orders'
 import OrderDetails from './components/Admin/OrderDetails'
 import ServiceRequests from './components/Admin/ServiceRequests'
 import RequestDetails from './components/Admin/RequestDetails'
+import Calendar from './components/Admin/Calendar'
 
 export default(
   <Switch>
@@ -36,6 +37,7 @@ export default(
     <Route component={Admin} path='/admin'/>
     <Route component={Reporting} path='/reports'/>
     <Route component={Orders} path='/orders'/>
+    <Route component={Calendar} path='/calendar'/>
     <Route component={OrderDetails} path='/orderdetails/:id'/>
     <Route component={ ServiceRequests }  path='/requests'/>
     <Route component={RequestDetails} path='/requestdetails/:id'/>
