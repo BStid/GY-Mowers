@@ -22,7 +22,9 @@ class Admin extends Component{
 
   componentDidMount(){
     axios.post('/api/dailyreport', {time: '1'})
-    .then(response => this.setState({sales: response.data[0]}))
+    .then(response => {
+      console.log(response)
+      this.setState({sales: response.data[0]})})
     .catch(err => console.log(err))
 
     axios.post('/api/requests', {status: false})
@@ -122,16 +124,17 @@ countOrders(orders){
 }
 
   render(){
+    console.log(this.state)
     return(
       <div className='admin_dash'>
         <AdminNav/>
         <h1 className='dash_title'>Dashboard</h1>
         <div className='admin_container'>
           <h1 className='box_title'>Intraday sales</h1>
-          <div className='today'>{this.state.sales.to_char}</div>
-          {this.state.sales.sum > 15000 ? <div className='dash_info_today' id='green'>{`$${this.state.sales.sum}`}</div>:
-          this.state.sales.sum > 0 ? <div className='dash_info_today' id='yellow'>{`$${this.state.sales.sum}`}</div>:
-          <div className='dash_info_today' id='red'>{`$${this.state.sales.sum}`}</div>}
+          {this.state.sales ? <div className='today'>{this.state.sales.to_char}</div> : <div className='today'>Let's get something on the board!!</div>}
+          {this.state.sales && this.state.sales.sum > 15000 ? <div className='dash_info_today' id='green'>{`$${this.state.sales.sum}`}</div>:
+          this.state.sales && this.state.sales.sum > 0 ? <div className='dash_info_today' id='yellow'>{`$${this.state.sales.sum}`}</div>:
+          <div className='dash_info_today' id='red'>{`$0`}</div>}
         </div>
         <div className='admin_container'>
          <h1 className='box_title'>Pending Sales Orders</h1>

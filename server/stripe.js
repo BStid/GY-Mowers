@@ -12,7 +12,6 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
 }
 
 const paymentApi = app => {
-
   app.post('/createcharge', (req, res) => {
     stripe.charges.create(req.body, postStripeCharge(res))
   });

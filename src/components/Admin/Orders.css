@@ -10,13 +10,7 @@
   width: 10vw;
 }
 .order_lines{
-  width: 90vw;
-}
-order_line{
-  display: flex;
-}
-report_input_button{
-  height: 10vh;
+  width: 100vw;
 }
 .Dropdown-root{
   width: 15vw;

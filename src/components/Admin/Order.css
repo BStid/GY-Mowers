@@ -5,7 +5,8 @@
 .order_line{
   display: flex;
   flex-wrap: wrap;
-  width: 95vw;
+  margin: auto;
+  width: 60vw;
   background-color: #f1c116;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -15,4 +16,8 @@
   width: 20vw;
   margin: 0;
   padding: 1;
+}
+#title{
+  font-size: 1.3em;
+  font-weight: bold;
 }
