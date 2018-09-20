@@ -1,14 +1,23 @@
 const getDailyReport = (req, res) =>{
   const db = req.app.get('db')
   db.get_daily_sales(req.body.time).then(response => {
+    if(response.length < 1){
+      db.get_daily_sales_after_eight(req.body.time)
+      .then(response2 => res.status(200).send(response2)).catch(err => console.log(err))
+      return;
+    }
     res.status(200).send(response)}).catch(err => console.log(err))
 }
 
 const getSkuReport = (req, res) =>{
   const db = req.app.get('db')
-  console.log(req.body)
   db.get_sku_sales([req.body.time, req.body.skus]).then(response => {
     console.log(response)
+    if(response.length < 1){
+      db.get_sku_sales_after_eight([req.body.time, req.body.skus])
+      .then(response2 => res.status(200).send(response2)).catch(err => console.log(err))
+      return;
+    }
     res.status(200).send(response)}).catch(err => console.log(err))
 }
 

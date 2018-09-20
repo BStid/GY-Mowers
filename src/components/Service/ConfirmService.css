@@ -1,0 +1,40 @@
+.confirm_container{
+  padding-top:4vh;
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.confirm_header{
+  margin-top: 0;
+  width: 100vw;
+}
+.left_side{
+  border: 1px solid #f1c116;
+  color: white;
+  width: 40vw;
+}
+.right_side{
+  border: 1px solid #f1c116;
+  text-align: center;
+  color: white;
+  width: 40vw;
+}
+.bottom_buttons{
+  margin-top: 5vh;
+  width: 20vw;
+  display: flex;
+}
+.confirm_service_buttons{
+  background: black;
+  border: 1px solid white;
+  color: #f1c116;
+  height: 5vh;
+  width: 10vw;
+  margin-right: 1vw;
+}
+.confirm_service_buttons:hover{
+  background: #f1c116;
+  color: black;
+  border: 1px solid black;
+}

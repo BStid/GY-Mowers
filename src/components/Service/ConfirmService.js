@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {setService} from '../../ducks/productReducer'
 import axios from 'axios'
+import './ConfirmService.css'
 
 class ConfirmService extends Component{
   constructor(){
@@ -24,7 +25,7 @@ class ConfirmService extends Component{
     let {first_name, last_name, address, zip, state, email, phone, message} = this.props.user
     return(
       <div className='confirm_container'>
-        <h1>Confirm Details</h1>
+        <h1 className='confirm_header'>Confirm Details</h1>
         <div className='left_side'>
           <h2>Customer Info</h2>
           <p>Name: {`${first_name} ${last_name}`}</p>
@@ -40,8 +41,8 @@ class ConfirmService extends Component{
           <p>Maintenance or Service issue: {`${this.props.serviceIssue}`}</p>
         </div>
         <div className='bottom_buttons'>
-        <Link to='/service'><button>Edit Information</button></Link>
-        <Link to='/'><button onClick={() => {
+        <Link to='/service'><button className='confirm_service_buttons'>Edit Information</button></Link>
+        <Link to='/'><button className='confirm_service_buttons' onClick={() => {
           this.props.setService(this.props.serviceDate.format('LL'), this.props.servicePickup, this.props.serviceIssue, this.props.user.user_id)
           this.sendServiceEmail(email)
           message ? axios.post('/api/sendsms', 

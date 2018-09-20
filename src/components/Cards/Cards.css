@@ -15,6 +15,11 @@
   text-align: left;
   margin: 0;
   width: 30vw;
+  text-decoration: none;
+  color: #f1c116;
+}
+.top_bar_content:hover{
+  color: white;
 }
 .item{
   text-decoration: none;

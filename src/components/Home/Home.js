@@ -15,7 +15,7 @@ class Home extends Component{
       redirect = 'http://localhost:3001/login'
     }
     return(
-      <div>
+      <div className='home_page'>
         <Link to='/blades'><button className='blades_box'>Mower Blades</button></Link>
         <Link to='/mowers'><button className='mowers_box'>Zero Turn Mowers</button></Link>
         <a href={redirect} ><button className='service_box'>Schedule Service</button></a>

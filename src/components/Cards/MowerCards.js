@@ -10,9 +10,10 @@ class MowerCards extends Component{
 
 
   render(){
+  console.log(this.props)
   let card = this.props.mowers.map((mower, i) =>{
    return(
-    this.props.user.is_admin ?
+    this.props.user && this.props.user.is_admin ?
     <div  key={i} className='sales_card'>
       <div className='toggle_container'>
         {mower.show ? <button className='toggle_button' onClick={() => this.props.toggleShow(mower.product_id, false)}>Deactivate Product</button>:

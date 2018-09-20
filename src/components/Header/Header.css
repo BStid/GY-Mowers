@@ -30,3 +30,19 @@
 #home{
   border: none;
 }
+.toggle-button{
+  padding-top: 7vh;
+  height: 10vh;
+  width: 15vw;
+  color: white;
+}
+@media screen and (min-width: 600px) {
+  .toggle-button{
+    display: none;
+  }
+}
+@media screen and (max-width: 599px) {
+  .links{
+    display: none;
+  }
+}

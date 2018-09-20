@@ -81,3 +81,50 @@
   width: 96vw;
   height: 50vh;
 }
+.home_page{
+  background: black;
+}
+@media screen and (max-width: 1025px) {
+  .blades_box{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 95vw;
+    background: black;
+    color: #f1c116;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000;
+    border: 1px solid white;
+    background-image: url('../../Blade.jpg');
+    background-size: cover;
+    repeat: no-repeat;
+  }
+  .service_box{
+    margin-bottom: 5vh;
+    width: 95vw;
+    background: black;
+    color: #f1c116;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000;
+    border: 1px solid white;
+    background-image: url('https://media.gettyimages.com/photos/black-metal-grate-picture-id128434950')
+  }
+  .mowers_box{
+    margin-bottom: 5vh;
+    width: 95vw;
+    background: black;
+    color: #f1c116;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000;
+    border: 1px solid white;
+    background-image: url('http://www.hjmcgarveylawncare.com/_/rsrc/1487682810380/lawn-mowing-service/Lawn%20Mowing%20page.jpg')
+  }
+  .slide{
+    display: none;
+  }
+  .blades_box::after{
+    display: none;
+  }
+  .service_box::after{
+    display: none;
+  }
+  .mowers_box::after{
+    display: none;
+  }
+}

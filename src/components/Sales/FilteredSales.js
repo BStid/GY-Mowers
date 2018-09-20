@@ -18,7 +18,7 @@ class FilteredSales extends Component{
         <Link to='/mowers'><h4 className='top_bar_content'>Back to all mowers</h4></Link>
         <h1 className='top_bar_content'>{`${this.props.match.params.brand} Mowers`}</h1>
       </div>
-        <div ><MowerCards mowers={this.props.mowers}/></div>
+        <div ><MowerCards mowers={this.props.mowers} user={this.props.user}/></div>
       </div>
     )
   }
@@ -26,7 +26,8 @@ class FilteredSales extends Component{
 
 function mapStateToProps(state){
   return{
-    mowers: state.mowers
+    mowers: state.mowers,
+    user: state.user
   }
 }
 
