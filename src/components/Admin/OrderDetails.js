@@ -22,9 +22,11 @@ class OrderDetails extends Component{
     .then(response => this.setState({order: response}))
     .catch(err => console.log(err))
     this.props.orders.map(e => {
-      if(e[0].order_number === parseInt(this.props.match.params.id)){
+      if(e[0].order_number === parseInt(this.props.match.params.id, 10)){
         this.setState({user: e[0]})
-      }})
+      }
+      return null;
+    })
   }
 
   confirmOrder(track){
@@ -46,7 +48,7 @@ class OrderDetails extends Component{
     let customerDeets = ""
     let orderItems = ''
     this.props.orders.map(e => {
-      if(e[0].order_number === parseInt(this.props.match.params.id)){
+      if(e[0].order_number === parseInt(this.props.match.params.id, 10)){
          customerDeets = e.map((element, index) => 
          {if(index === 0){
            return(
@@ -57,8 +59,9 @@ class OrderDetails extends Component{
               <p className='order_details_element'>{`Phone Number: : ${element.phone}`}</p>
             </div>
         )}
+        return null
       })
-      }else return null
+      }return null
     })
     this.state.order.data ? orderItems = this.state.order.data.map((e, i) => {
       return(

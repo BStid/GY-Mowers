@@ -23,7 +23,6 @@ class Admin extends Component{
   componentDidMount(){
     axios.post('/api/dailyreport', {time: '1'})
     .then(response => {
-      console.log(response)
       this.setState({sales: response.data[0]})})
     .catch(err => console.log(err))
 
@@ -44,7 +43,7 @@ class Admin extends Component{
    await axios.post('/api/skureport', {time, skus}).then(res => {
     res.data.map((e, i) => {
       labels.push(this.makeStringArray(e.title))
-      data.push(parseInt(e.count))
+      data.push(parseInt(e.count, 10))
       return ''
     })
   }).catch(err => console.log(err))
@@ -120,11 +119,11 @@ countOrders(orders){
       this.setState({pSales: count})
       return count
     }
+    return null
   })
 }
 
   render(){
-    console.log(this.state)
     return(
       <div className='admin_dash'>
         <AdminNav/>

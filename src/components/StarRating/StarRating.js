@@ -22,7 +22,7 @@ class StarRating extends Component{
 
   getAverageReview(reviews){
     let numerator = 0
-    reviews.map(e => numerator += parseInt(e.rating))
+    reviews.map(e => numerator += parseInt(e.rating, 10))
     this.setState({numOfReviews: reviews.length})
     return(numerator/reviews.length)
   }

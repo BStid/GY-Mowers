@@ -22,7 +22,6 @@ const getReviews = (req, res) =>{
 }
 
 const addReview = (req, res) => {
-  console.log(req.body)
   const db =req.app.get('db')
   db.add_review([req.body.id, req.body.review, req.body.user.user_id]).then(response => {
     res.status(200).send(response)}).catch(err => {

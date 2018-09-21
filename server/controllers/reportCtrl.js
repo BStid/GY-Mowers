@@ -12,7 +12,6 @@ const getDailyReport = (req, res) =>{
 const getSkuReport = (req, res) =>{
   const db = req.app.get('db')
   db.get_sku_sales([req.body.time, req.body.skus]).then(response => {
-    console.log(response)
     if(response.length < 1){
       db.get_sku_sales_after_eight([req.body.time, req.body.skus])
       .then(response2 => res.status(200).send(response2)).catch(err => console.log(err))

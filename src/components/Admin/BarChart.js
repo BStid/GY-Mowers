@@ -38,7 +38,7 @@ async generateSkuSales(time, skus){
   res.data.map((e, i) => {
     labels.push(this.makeStringArray(e.title))
     pieLabels.push(e.title)
-    data.push(parseInt(e.count))
+    data.push(parseInt(e.count, 10))
     return ''
   })
 }).catch(err => console.log(err))
@@ -135,7 +135,7 @@ async generateDailySales(time){
   await axios.post('/api/dailyreport', {time}).then(res => {
     res.data.map((e, i) => {
       labels.unshift(e.to_char)
-      data.unshift(parseInt(e.sum))
+      data.unshift(parseInt(e.sum, 10))
       return ''
     })
   }).catch(err => console.log(err))
@@ -188,7 +188,6 @@ async generateDailySales(time){
 
   render(){
     const options = ['Top Sales by sku', 'Gross sales by Day']
-    const defaultOption = options[0]
     return(
       <div className='reporting_content'>
           <div className='filter_options'>

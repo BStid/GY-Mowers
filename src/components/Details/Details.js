@@ -41,16 +41,18 @@ class Details extends Component{
               <Modal show={this.state.isOpen} onClose={this.toggleModal}><Reviews id={this.props.match.params.id} user={this.props.user.user_id}/></Modal>
             </div>
           )
-        }})
+        }
+        return null;
+      })
     }else if(this.props.match.params.type === "mower"){
       deets = this.props.mowers.map(mower => {
         if(mower.product_id === parseInt(this.props.match.params.id, 10)){
           return(
             <div key={mower.product_id} className='details_content'>
-              <div className='left_side'>
+              <div className='left_side_details'>
                 <img alt='mower' className='deets_img' src={mower.img}/>
               </div>
-              <div className='right_side'>
+              <div className='right_side_details'>
                 <h1>{mower.title}</h1>
                 <div className='price'>{`$${mower.price}`}</div>
                 <p className='desc'>{mower.description}</p>

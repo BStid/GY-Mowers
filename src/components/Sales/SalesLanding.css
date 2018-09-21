@@ -1,5 +1,6 @@
 .landing{
   display: flex;
+  background: black;
 }
 .sales{
   border: 1px solid black;
@@ -13,4 +14,14 @@
 .blades_img{
   height: 100%;
   width: 100%;
+}
+@media screen and (max-width: 1025px) {
+  .landing{
+    flex-wrap: wrap;
+  }
+  .sales{
+    width: 95vw;
+    height: 60vh;
+    margin-bottom: 5vh;
+  }
 }

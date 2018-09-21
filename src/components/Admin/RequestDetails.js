@@ -41,7 +41,7 @@ class RequestDetails extends Component{
     let customerDeets = ""
     let orderItems = ''
     customerDeets = this.props.requests.map(e => {
-      if(e.service_id === parseInt(this.props.match.params.id)){
+      if(e.service_id === parseInt(this.props.match.params.id, 10)){
         return(
           <div>
             <p className='order_details_element'>{`Customer Name: ${e.first_name} ${e.last_name}`}</p>
@@ -51,6 +51,7 @@ class RequestDetails extends Component{
           </div>
         )
       }
+      return null;
     })
     this.state.order.data ? orderItems = this.state.order.data.map((e, i) => {
       return(

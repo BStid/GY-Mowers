@@ -49,7 +49,7 @@ class Header extends Component {
           <button onClick={() => this.redirect()} className='navlink'>{this.props.user && this.props.user.is_admin ? 'Admin Dashboard' :
            this.props.user && this.props.user.authid ? 'Logout' : 'Login'}</button>
         </div>
-           <div class='toggle-button'>&#9776;</div>
+           <div className='toggle-button'>&#9776;</div>
       </div>
     )
   }

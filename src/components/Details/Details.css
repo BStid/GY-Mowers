@@ -6,13 +6,13 @@ display: flex;
 flex-wrap: wrap;
 position: relative;
 }
-.left_side{
+.left_side_details{
 width: 40vw;
 border: solid black 1px;
 margin: 5px;
 padding: 5px;
 }
-.right_side{
+.right_side_details{
 text-align: left;
 display: flex;
 flex-direction: column;

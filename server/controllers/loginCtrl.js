@@ -7,7 +7,7 @@ function addUserInfo(req, res){
 
 const getUser = (req, res) => {
   if (!req.user) res.sendStatus(401);
-  else res.status(200).send(req.user);
+  else res.status(200).send(req.user)
 };
 
 const logout = (req, res) => {

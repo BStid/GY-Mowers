@@ -34,7 +34,6 @@ class ServiceRequests extends Component{
 
   render(){
     const options = ['Completed Requests', 'Pending Requests']
-    const defaultOption = options[0]
     return(
       <div className='orders_container'>
         <AdminNav/>

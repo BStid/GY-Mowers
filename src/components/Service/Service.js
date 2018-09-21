@@ -35,7 +35,6 @@ class Service extends Component{
 
   render(){
     const options = ['yes', 'no']
-    const defaultOption = 'select..'
     return(
       <div className='service_landing_content'>
         <h3 className='form_header'>Will you need pick up and delivery?</h3>
@@ -46,7 +45,7 @@ class Service extends Component{
         <div className='calendar'>
           <DatePicker selected={this.props.serviceDate} onChange={this.props.setServiceDate}/>
         </div>
-        <h3 className='form_header'>Please describe the problem you are having, or serve the machine will need</h3>
+        <h3 className='form_header'>Please describe the problem you are having, or service the machine will need</h3>
         <div className='issue_box'>
           <textarea rows="5" cols="100" id="issue" placeholder={this.props.serviceIssue.length > 0 ? this.props.serviceIssue : this.state.issuePlace}
           onChange={(e) => this.props.setServiceIssue({issue: e.target.value})}></textarea>

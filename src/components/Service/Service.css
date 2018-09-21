@@ -36,8 +36,25 @@ margin-bottom: 5vh;
 .issue_box{
   margin: auto;
 }
+#issue{
+  width: 35vw;
+}
 .service_banner{
   margin: auto;
   height: 40vh;
   width: 95vw;
+}
+@media screen and (max-width: 1000px){
+#issue{
+  width: 80vw;
+}
+.Dropdown-control{
+  width: 40vw;
+}
+.delivery_drop{
+  margin-left: 30vw;
+}
+.service_submit{
+  width: 20vw;
+}
 }

@@ -53,6 +53,7 @@ class Orders extends Component{
       if((i+1) === orders.length){
         finalData.push(order)
       }
+      return finalData;
     })
     return finalData;
   }
