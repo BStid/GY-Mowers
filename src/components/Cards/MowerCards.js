@@ -10,7 +10,6 @@ class MowerCards extends Component{
 
 
   render(){
-  console.log(this.props)
   let card = this.props.mowers.map((mower, i) =>{
    return(
     this.props.user && this.props.user.is_admin ?

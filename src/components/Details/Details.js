@@ -21,7 +21,6 @@ class Details extends Component{
   }
 
   render(){
-    console.log(this.props)
     let deets =''
     if(this.props.match.params.type === "blade"){
       deets = this.props.blades.map(blade => {

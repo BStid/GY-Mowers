@@ -82,7 +82,22 @@
   height: 50vh;
 }
 .home_page{
-  background: black;
+ margin-bottom: 0;
+}
+.fade_in_image{
+  z-index: 10;
+  position: absolute;
+  height: 100vh;
+  width: 96vw;
+  animation: fadeOut 3s;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 @media screen and (max-width: 1025px) {
   .blades_box{

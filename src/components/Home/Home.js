@@ -4,10 +4,12 @@ import './Home.css'
 import Carousel from '@brainhubeu/react-carousel';
 import {connect} from 'react-redux'
 import '@brainhubeu/react-carousel/lib/style.css';
+import Footer from '../Footer/Footer'
 
 class Home extends Component{
 
   render(){
+    console.log(this.props)
     let redirect = ''
     if(this.props.user && this.props.user.authid){
       redirect = 'http://localhost:3000/#/service'
@@ -32,6 +34,7 @@ class Home extends Component{
         </Carousel>
         </div>
         <iframe className='map' title ='map' src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJBxjFLd7eTYYRxlCnKYHm_xc&key=AIzaSyC_swPRTg8ml90Dbg2Lww89KGsNPQfKUVc"></iframe>
+        <Footer user={this.props.user}/>
       </div>
     )
   }

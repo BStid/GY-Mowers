@@ -1,0 +1,72 @@
+.footer{
+  padding-top: 3vh;
+  padding-left: 3vw;
+  height: 30vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(56, 52, 52);
+}
+.footer_title{
+  margin-top: 0;
+  color: #f1c116;
+}
+.footer_left{
+  width: 40vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer_links{
+  display: flex;
+  width: 24%;
+  flex-direction: column;
+  border-left: 1px solid white;
+  padding-left: auto;
+  padding-right: auto;
+}
+.footer_button:hover{
+  color: #f1c116;
+}
+.footer_right{
+  margin-left: 7vw;
+  width: 40vw;
+}
+.footer_bottom{
+  width: 30vw;
+  margin-left: 50vw;
+}
+.contact_form{
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer_name_input{
+  width: 35%;
+  margin-right: 3vw;
+  margin-bottom: 1vh;
+}
+.footer_email_input{
+  width: 65%;
+  margin-bottom: 1vh;
+}
+.footer_message_input{
+  width: 100%;
+  margin-bottom: 1vh;
+}
+.footer_submit_button{
+  width: 15%;
+  height: 3vh;
+  margin-left: 35vw;
+}
+.footer_button{
+  margin-bottom: .7vh;
+  border: none;
+  font-size: 1em;
+  background: none;
+  color: white;
+}
+.disclaimer{
+  color: white;
+}
+#shop{
+  border-left: none;
+}
