@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import AdminNav from './AdminNav'
+import AdminNav from '../AdminNav/AdminNav'
 import {Link} from 'react-router-dom'
-import './Order.css'
+import '../OrderTracking/Order.css'
 
 
 class Request extends Component{

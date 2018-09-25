@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import './AdminNav.css'
 import { black } from 'material-ui/styles/colors';
 import {connect} from 'react-redux'
-import {logout} from '../../ducks/productReducer'
+import {logout} from '../../../ducks/productReducer'
 
 class AdminNav extends Component{
   constructor(){

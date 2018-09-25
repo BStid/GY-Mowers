@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import AdminNav from './AdminNav'
+import AdminNav from '../AdminNav/AdminNav'
 import axios from 'axios'
 import {Bar} from 'react-chartjs-2'
 import './Admin.css'

@@ -5,7 +5,7 @@ import Dropdown from 'react-dropdown'
 import axios from 'axios'
 import Request from './Request'
 import {setRequests} from '../../../ducks/productReducer'
-import './Orders.css'
+import '../OrderTracking/Order.css'
 
 
 class ServiceRequests extends Component{
