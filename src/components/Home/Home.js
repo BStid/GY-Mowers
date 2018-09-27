@@ -14,7 +14,7 @@ class Home extends Component{
     if(this.props.user && this.props.user.authid){
       redirect = `${process.env.REACT_APP_PATH}/service`
     }else{
-      redirect = `${process.env.REACT_APP_LOGIN_PATH}/login`
+      redirect = `${process.env.REACT_APP_LOGIN_PATH}`
     }
     return(
       <div className='home_page'>

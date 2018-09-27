@@ -38,7 +38,7 @@ export default class Footer extends Component{
     if(this.props.user && this.props.user.authid) {
       redirect = `${process.env.REACT_APP_PATH}/service`
     }else{
-      redirect = `${process.env.REACT_APP_LOGIN_PATH}/login?path=service`
+      redirect = `${process.env.REACT_APP_LOGIN_PATH}?path=service`
     }
     return(
       <div className='footer'>
@@ -60,7 +60,7 @@ export default class Footer extends Component{
           </div>
           <div className='footer_links' id='service'>
           <h3 className='footer_title'>Other Links</h3>
-            <a href = {`${process.env.REACT_APP_LOGIN_PATH}login?path=`}><button className='footer_button'>Login</button></a>
+            <a href = {`${process.env.REACT_APP_LOGIN_PATH}?path=`}><button className='footer_button'>Login</button></a>
             <Link to='/about'><button className='footer_button'>About Us</button></Link>
             <Link to='/cart'><button className='footer_button'>Cart</button></Link>
           </div>

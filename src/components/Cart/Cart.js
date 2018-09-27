@@ -109,7 +109,7 @@ class Cart extends Component{
            }}><Checkout 
                 name={'GY Mowers'} description={''} amount={this.props.cartTotal} 
                 email={this.props.user.email} toggleShow={this.toggleShow}/> </div>:
-           <a href={`${process.env.REACT_APP_LOGIN_PATH}/login?path=cart`}><button>Login To Checkout</button></a>}
+           <a href={`${process.env.REACT_APP_LOGIN_PATH}?path=cart`}><button>Login To Checkout</button></a>}
       </div>: 
         <div className='no_items'>
           <h1>No Items In Cart</h1>

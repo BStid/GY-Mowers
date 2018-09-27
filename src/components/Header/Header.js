@@ -27,7 +27,7 @@ class Header extends Component {
     }else if(this.props.user && this.props.user.authid){
       this.props.logout().then(() => window.location.href = process.env.REACT_APP_PATH);
     }else{
-      window.location.href = `${process.env.REACT_APP_LOGIN_PATH}/login?path=`
+      window.location.href = `${process.env.REACT_APP_LOGIN_PATH}?path=`
     }
   }
 
@@ -36,7 +36,7 @@ class Header extends Component {
     if(this.props.user && this.props.user.authid) {
       redirect = `${process.env.REACT_APP_PATH}/service`
     }else{
-      redirect = `${process.env.REACT_APP_LOGIN_PATH}/login?path=service`
+      redirect = `${process.env.REACT_APP_LOGIN_PATH}?path=service`
     }
     return(
       <div className='header'>
