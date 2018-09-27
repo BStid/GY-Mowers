@@ -12,9 +12,9 @@ class Home extends Component{
     console.log(this.props)
     let redirect = ''
     if(this.props.user && this.props.user.authid){
-      redirect = 'http://localhost:3000/#/service'
+      redirect = `${process.env.REACT_APP_PATH}/service`
     }else{
-      redirect = 'http://localhost:3001/login'
+      redirect = `${process.env.REACT_APP_LOGIN_PATH}/login`
     }
     return(
       <div className='home_page'>

@@ -77,7 +77,7 @@ class RequestDetails extends Component{
                 text="Contact customer within 24 hours to coordinate pickup/dropoff of machine"
                 onConfirm={() => {
                 this.setState({ show: false })
-                window.location.href = 'http://localhost:3000/#/requests'}}
+                window.location.href = `${process.env.REACT_APP_PATH}/requests`}}
             />
           </div>
         </div>

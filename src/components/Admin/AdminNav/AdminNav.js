@@ -49,7 +49,7 @@ class AdminNav extends Component{
             var myWindow = window.open('https://gy162134.auth0.com/v2/logout')
             myWindow.close()
             this.props.logout()
-            window.location.href = 'http://localhost:3000/#/'
+            window.location.href = `${process.env.REACT_APP_PATH}`
             window.location.reload(false);
           }}>Logout</div>]}
         titleStyle     =  {{backgroundColor: black}}

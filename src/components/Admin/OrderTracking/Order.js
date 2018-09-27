@@ -6,13 +6,6 @@ import './Order.css'
 
 
 class Order extends Component{
-  constructor(){
-    super()
-  }
-
-  componentDidMount(){
-
-  }
 
   render(){
     var ordersList = ''

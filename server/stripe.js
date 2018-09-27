@@ -1,4 +1,3 @@
-require('dotenv').config()
 const configureStripe = require('stripe');
 const stripe = configureStripe(process.env.STRIPE_SECRET);
 

@@ -1,14 +1,13 @@
 import React from 'react'
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-require('dotenv').config()
 
 const CURRENCY = 'USD';
 
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  window.location.assign('http://localhost:3000/#/cart')
+  window.location.assign(`${process.env.REACT_APP_PATH}/cart`)
 };
 
 const onToken = (amount, description, email, toggleShow) => token =>

@@ -5,7 +5,6 @@ import axios from 'axios';
 import SweetAlert from 'sweetalert2-react';
 import './OrderDetails.css'
 
-
 class OrderDetails extends Component{
   constructor(){
     super()
@@ -89,7 +88,7 @@ class OrderDetails extends Component{
               text="Customer has been notified of tracking information"
               onConfirm={() => {
                 this.setState({ show: false })
-                window.location.href = 'http://localhost:3000/#/orders'}}
+                window.location.href = `${process.env.REACT_APP_PATH}/orders`}}
             />
           </div>
         </div>

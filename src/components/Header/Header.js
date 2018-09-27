@@ -5,6 +5,7 @@ import logo from './GYmowerLogo.png'
 import {connect} from 'react-redux'
 import {getCart, getUser, logout} from '../../ducks/productReducer'
 
+
 class Header extends Component {
   constructor(){
     super()
@@ -22,20 +23,20 @@ class Header extends Component {
 
   redirect(){
     if(this.props.user && this.props.user.is_admin){
-      window.location.href = 'http://localhost:3000/#/admin'
+      window.location.href = `${process.env.REACT_APP_PATH}/admin`
     }else if(this.props.user && this.props.user.authid){
-      this.props.logout().then(() => window.location.href = 'http://localhost:3000/#/');
+      this.props.logout().then(() => window.location.href = process.env.REACT_APP_PATH);
     }else{
-      window.location.href = 'http://localhost:3001/login?path='
+      window.location.href = `${process.env.REACT_APP_LOGIN_PATH}/login?path=`
     }
   }
 
   render(){
     let redirect = ''
     if(this.props.user && this.props.user.authid) {
-      redirect = 'http://localhost:3000/#/service'
+      redirect = `${process.env.REACT_APP_PATH}/service`
     }else{
-      redirect = 'http://localhost:3001/login?path=service'
+      redirect = `${process.env.REACT_APP_LOGIN_PATH}/login?path=service`
     }
     return(
       <div className='header'>

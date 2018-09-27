@@ -5,6 +5,7 @@ import Dropdown from 'react-dropdown'
 import {setServiceDate, setServicePickup, setServiceIssue} from '../../ducks/productReducer'
 import 'react-dropdown/style.css'
 import './Service.css'
+
  
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -27,9 +28,9 @@ class Service extends Component{
   }
   redirect(){
     if(this.props.user && this.props.user.first_name){
-      window.location.href = 'http://localhost:3000/#/confirmservice'
+      window.location.href = `${process.env.REACT_APP_PATH}/confirmservice`
     }else{
-      window.location.href = 'http://localhost:3000/#/serviceinfo'
+      window.location.href = `${process.env.REACT_APP_PATH}/serviceinfo`
     }
   }
 

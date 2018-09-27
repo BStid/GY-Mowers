@@ -16,7 +16,10 @@ const { getUser, logout, addUserInfo } = require('./controllers/loginCtrl')
 const { getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails } = require('./controllers/reportCtrl')
 const { addRating, getRating, getReviews, addReview } = require('./controllers/ratingCtrl')
 const app = express()
+console.log(path.join(__dirname, '../build'))
+app.use(express.static(path.join(__dirname, '../build')))
 app.use(json())
+
 
 const configureServer = app => {
   app.use(cors());
@@ -108,8 +111,8 @@ app.get('/login', (req, res, next) => {
   passport.authenticate('auth0'),
   (req, res) => {
     app.locals.pathRedirect ? 
-    res.redirect(`http://localhost:3000/#/${app.locals.pathRedirect}`): 
-    res.redirect(`http://localhost:3000/#/`)  
+    res.redirect(`${process.env.AUTH_PATH}${app.locals.pathRedirect}`): 
+    res.redirect(`${process.env.AUTH_PATH}`)  
     app.locals.pathRedirect = null
   });
 
