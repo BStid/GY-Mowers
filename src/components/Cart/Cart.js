@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
 import Checkout from '../Checkout/Checkout'
+import SweetAlert from 'sweetalert2-react';
 import {
   Table,
   TableBody,
@@ -22,15 +23,21 @@ class Cart extends Component{
     super()
 
     this.state = {
-      date: ''
+      date: '',
+      show: false
     }
 
     this.addOrderToDB = this.addOrderToDB.bind(this)
     this.sendPurchaseEmail = this.sendPurchaseEmail.bind(this)
+    this.toggleShow = this.toggleShow.bind(this)
   }
 
   componentDidMount(){
     this.setState({date: moment()})
+  }
+  toggleShow(){
+    console.log('Toggle Show!!!')
+    this.setState({show: !this.state.show})
   }
 
   addOrderToDB(cart, userid, date){
@@ -99,12 +106,23 @@ class Cart extends Component{
             this.addOrderToDB(this.props.cart, this.props.user.user_id, this.state.date.format('LL'))
              setTimeout(this.sendPurchaseEmail, 15000, this.props.user.email)
              this.props.clearCart()
-           }}><Checkout name={'GY Mowers'} description={''} amount={this.props.cartTotal} email={this.props.user.email}/> </div>:
+           }}><Checkout 
+                name={'GY Mowers'} description={''} amount={this.props.cartTotal} 
+                email={this.props.user.email} toggleShow={this.toggleShow}/> </div>:
            <a href='http://localhost:3001/login?path=cart'><button>Login To Checkout</button></a>}
       </div>: 
         <div className='no_items'>
           <h1>No Items In Cart</h1>
           <Link to='/sales'><button>Shop Now!!</button></Link>
+          <SweetAlert
+                show={this.state.show}
+                confirmButtonColor= '#f1c116'
+                title="Thank you for your purchase!!"
+                text="An email containing order confirmation has been sent. If you do not receive the communication within 5 minutes please contact us for assistance"
+                onConfirm={() => {
+                this.setState({ show: false })
+                window.location.href = 'http://localhost:3000/#/'}}
+            />
         </div>
         }
     </div>

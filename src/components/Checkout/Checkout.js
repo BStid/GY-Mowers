@@ -8,15 +8,10 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  window.location.assign('http://localhost:3000/#/')
-  alert('Payment Successful')
+  window.location.assign('http://localhost:3000/#/cart')
 };
 
-const errorPayment = data => {
-  window.location.assign('http://localhost:3000/#/')
-};
-
-const onToken = (amount, description, email) => token =>
+const onToken = (amount, description, email, toggleShow) => token =>
   axios.post(`/createcharge`,
     {
       description,
@@ -25,16 +20,20 @@ const onToken = (amount, description, email) => token =>
       receipt_email: email,
       amount: fromDollarToCent(amount)
     })
-    .then(successPayment)
-    .catch((e)=>{errorPayment()});
+    .then(()=>{
+    toggleShow()
+    successPayment()})
+    .catch(()=>{
+    toggleShow()
+    successPayment()});
 
-const Checkout = ({ name, description, amount, email }) =>{
+const Checkout = ({ name, description, amount, email, toggleShow }) =>{
    return (
     <StripeCheckout
     name={name}
     description={description}
     amount={fromDollarToCent(amount)}
-    token={onToken(amount, description, email)}
+    token={onToken(amount, description, email, toggleShow)}
     currency={CURRENCY}
     stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE}
   />)}

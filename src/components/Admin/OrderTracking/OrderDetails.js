@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import AdminNav from '../AdminNav/AdminNav'
 import axios from 'axios';
+import SweetAlert from 'sweetalert2-react';
 import './OrderDetails.css'
 
 
@@ -11,6 +12,7 @@ class OrderDetails extends Component{
     this.state = {
       tracking: '',
       order: '',
+      show: false,
       user: {}
     }
 
@@ -31,7 +33,7 @@ class OrderDetails extends Component{
 
   confirmOrder(track){
     axios.put('/api/orderdetails', {tracking: track, id: this.props.match.params.id})
-    .then(response => alert('Order Complete!!')).catch(err => console.log(err))
+    .then(response => this.setState({show: true})).catch(err => console.log(err))
     let body = {
       subject: "Your order has shipped!!",
       email: this.state.user.email,
@@ -41,7 +43,6 @@ class OrderDetails extends Component{
     {recipient: `+1${this.state.user.phone}`, message: `Hello, ${this.state.user.first_name}. Your GY Mowers order. Your tracking number is ${track}`}): null
   
     axios.post('/api/send', body).then(res => res.sendStatus(200).catch(err => console.log(err)))
-    window.location.href = 'http://localhost:3000/#/orders'
   }
 
   render(){
@@ -81,6 +82,15 @@ class OrderDetails extends Component{
           <div className='order_details_submit'>
             <input placeholder='Enter Tracking #' onChange={e => this.setState({tracking: e.target.value})}></input>
             <button onClick={() => this.confirmOrder(this.state.tracking)}>Confirm Order</button>
+            <SweetAlert
+              show={this.state.show}
+              title="Order Completed"
+              confirmButtonColor= '#f1c116'
+              text="Customer has been notified of tracking information"
+              onConfirm={() => {
+                this.setState({ show: false })
+                window.location.href = 'http://localhost:3000/#/orders'}}
+            />
           </div>
         </div>
       </div>

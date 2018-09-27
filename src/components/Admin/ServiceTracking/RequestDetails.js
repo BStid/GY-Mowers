@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import AdminNav from '../AdminNav/AdminNav'
+import SweetAlert from 'sweetalert2-react';
 import axios from 'axios';
 
 
@@ -24,7 +25,7 @@ class RequestDetails extends Component{
 
   confirmOrder(){
     axios.put('/api/requestdetails', {id: this.props.match.params.id})
-    .then(response => alert('Service Complete!!')).catch(err => console.log(err))
+    .then(response => this.setState({show: true})).catch(err => console.log(err))
     let body = {
       subject: "Your service request has been completed!!",
       email: this.state.order.data[0].email,
@@ -34,7 +35,6 @@ class RequestDetails extends Component{
     {recipient: `+1${this.state.order.data[0].phone}`, message: `Hello, ${this.state.order.data[0].first_name}. Your mowers runs like new again. We will contact you within 24 hours to schedule a delivery time with you.`}): null
   
     axios.post('/api/send', body).then(res => res.sendStatus(200).catch(err => console.log(err)))
-    window.location.href = 'http://localhost:3000/#/requests'
   }
 
   render(){
@@ -69,7 +69,16 @@ class RequestDetails extends Component{
             {orderItems}
           </div>
           <div>
-            <button onClick={() => this.confirmOrder()}>Complete Service</button>
+            <button onClick={() => this.confirmOrder(this.state.tracking)}>Confirm Order</button>
+            <SweetAlert
+                show={this.state.show}
+                title="Service Completed"
+                confirmButtonColor= '#f1c116'
+                text="Contact customer within 24 hours to coordinate pickup/dropoff of machine"
+                onConfirm={() => {
+                this.setState({ show: false })
+                window.location.href = 'http://localhost:3000/#/requests'}}
+            />
           </div>
         </div>
       </div>

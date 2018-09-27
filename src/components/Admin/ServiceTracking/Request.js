@@ -6,13 +6,6 @@ import '../OrderTracking/Order.css'
 
 
 class Request extends Component{
-  constructor(){
-    super()
-  }
-
-  componentDidMount(){
-
-  }
 
   render(){
     var requestList = ''
