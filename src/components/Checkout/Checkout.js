@@ -6,9 +6,9 @@ const CURRENCY = 'USD';
 
 const fromDollarToCent = amount => amount * 100;
 
-const successPayment = data => {
-  window.location.assign(`${process.env.REACT_APP_PATH}/#/cart`)
-};
+// const successPayment = data => {
+//   window.location.assign(`${process.env.REACT_APP_PATH}/#/cart`)
+// };
 
 const onToken = (amount, description, email, toggleShow) => token =>
   axios.post(`/createcharge`,
@@ -20,10 +20,10 @@ const onToken = (amount, description, email, toggleShow) => token =>
       amount: fromDollarToCent(amount)
     })
     .then(()=>{
-    successPayment()
+    // successPayment()
     toggleShow()})
     .catch(()=>{
-    successPayment()
+    // successPayment()
     toggleShow()});
 
 const Checkout = ({ name, description, amount, email, toggleShow }) =>{

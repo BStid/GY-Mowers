@@ -35,6 +35,7 @@ class Cart extends Component{
   componentDidMount(){
     this.setState({date: moment()})
   }
+
   toggleShow(){
     this.setState({show: !this.state.show})
   }
