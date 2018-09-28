@@ -7,6 +7,11 @@
   width: 100vw;
   color:  #f1c116;
 }
+.submit_button_box{
+  display: flex;
+  justify-content: center;
+  width: 100vh;
+}
 .service_submit{
   margin: auto;
   width: 10vw;
