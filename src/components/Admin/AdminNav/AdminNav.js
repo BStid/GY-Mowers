@@ -46,11 +46,7 @@ class AdminNav extends Component{
           <Link style={{ textDecoration: 'none' }} to='/calendar'><div className='dash_button'>Service Calendar</div></Link>,
           <Link style={{ textDecoration: 'none' }} to='/sales'><div className='dash_button'>Product Catalog</div></Link>,
           <div className='dash_button' onClick={()=>{
-            var myWindow = window.open('https://gy162134.auth0.com/v2/logout')
-            myWindow.close()
-            this.props.logout()
-            window.location.href = `${process.env.REACT_APP_PATH}`
-            window.location.reload(false);
+            this.props.logout().then(() => window.location.href = process.env.REACT_APP_PATH);
           }}>Logout</div>]}
         titleStyle     =  {{backgroundColor: black}}
         itemStyle      =  {{backgroundColor: '#fff'}}
