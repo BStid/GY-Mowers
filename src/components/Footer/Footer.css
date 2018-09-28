@@ -74,4 +74,11 @@
   .footer_right{
     display: none;
   }
+  .footer_bottom{
+    width: 90vw;
+    margin: auto;
+  }
+  .footer_left{
+    width: 90vw;
+  }
 }
