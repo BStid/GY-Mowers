@@ -20,11 +20,11 @@ const onToken = (amount, description, email, toggleShow) => token =>
       amount: fromDollarToCent(amount)
     })
     .then(()=>{
-    toggleShow()
-    successPayment()})
+    successPayment()
+    toggleShow()})
     .catch(()=>{
-    toggleShow()
-    successPayment()});
+    successPayment()
+    toggleShow()});
 
 const Checkout = ({ name, description, amount, email, toggleShow }) =>{
    return (
