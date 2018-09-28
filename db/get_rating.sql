@@ -1,1 +1,1 @@
-SELECT * FROM ratings WHERE product_id = $1;
+SELECT * FROM ratings WHERE product_id = $1 AND rating != null;
