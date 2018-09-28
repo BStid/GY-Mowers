@@ -70,3 +70,8 @@
 #shop{
   border-left: none;
 }
+@media screen and (max-width: 599px) {
+  .footer_right{
+    display: none;
+  }
+}

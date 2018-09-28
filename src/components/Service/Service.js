@@ -55,7 +55,7 @@ class Service extends Component{
           onChange={(e) => this.props.setServiceIssue({issue: e.target.value})}></textarea>
         </div>
         <h6 className='remaining'>Chars Remaining{`(${500 - this.props.serviceIssue.length})`}</h6>
-        <Link classname='submit_button_box' to={submitLink}><button className='service_submit'>submit</button></Link>
+        <Link className='submit_button_box' to={submitLink}><button className='service_submit'>Submit</button></Link>
         <img className='service_banner' src='https://cdnmedia.endeavorsuite.com/images/organizations/897e7640-c2db-489c-8204-5e34983c8664/offers/or4448_150737_mo1.jpg?v=1521113282958'></img>
       </div>
       

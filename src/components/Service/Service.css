@@ -10,9 +10,12 @@
 .submit_button_box{
   display: flex;
   justify-content: center;
+  margin: auto;
   width: 100vh;
+  text-decoration: none;
 }
 .service_submit{
+  text-decoration: none;
   margin: auto;
   width: 10vw;
   height: 4vh;
