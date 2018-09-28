@@ -29,7 +29,7 @@ class Home extends Component{
           centered
           infinite>
          <Link to='/filteredmowers/Hustler'> <img alt='banner1' className='slide' src='https://media.50below.com/corporate/webdesign/merchslides/Hustler/8b257fb5-52db-4b1b-ac19-312b4ad49642.jpg' /></Link>
-         <Link to='/filteredmowers/Spartan'>  <img alt='banner2' className='slide' src='https://static.visionamp.org/rubix/20161019/orig_4e906dc57f3965bd31e57df93b5b81002b8d6c93.jpg' /></Link>
+         <Link to='/filteredmowers/Spartan'>  <img alt='banner2' className='slide' src='https://cdnmedia.endeavorsuite.com/images/organizations/a343237e-4586-481a-ab16-012fb60b8271/offers/spartan_mowers%20offer%20banner.jpg?v=1519091287758' /></Link>
          <Link to='/filteredmowers/BigDog'> <img alt='banner3' className='slide' src='https://www.ewipower.com/sites/all/themes/theme321/images/BigDog_0717.jpg' /></Link>
         </Carousel>
         </div>
