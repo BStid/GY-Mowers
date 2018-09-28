@@ -10,7 +10,7 @@ const cors = require('cors')
 const path = require('path')
 const configureRoutes = require('./stripe')
 const { getAllMowers, getAllBlades, getMowerBrand, toggleShow } = require('./controllers/productCtrl')
-const { addToCart, getCart, deleteFromCart, addOrder } = require('./controllers/cartCtrl')
+const { addToCart, getCart, deleteFromCart, addOrder, clearCart } = require('./controllers/cartCtrl')
 const { setServiceApt } = require('./controllers/serviceCtrl')
 const { getUser, logout, addUserInfo } = require('./controllers/loginCtrl')
 const { getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails } = require('./controllers/reportCtrl')
@@ -87,6 +87,7 @@ app.get('/api/blades', getAllBlades)
 app.put('/api/products', toggleShow)
 
 //CART ENDPOINTS
+app.get('/api/clearcart', clearCart)
 app.get('/api/cart', getCart);
 app.post('/api/cart', addToCart);
 app.delete('/api/cart/:id', deleteFromCart)

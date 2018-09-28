@@ -170,7 +170,7 @@ export function setOrders(orders){
   }
 }
 export function clearCart(){
-  console.log("CLEAR CART RUN")
+  axios('api/clearcart')
   return{
     type: CLEAR_CART,
     payload: []
