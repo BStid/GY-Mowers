@@ -16,7 +16,7 @@ const { getUser, logout, addUserInfo } = require('./controllers/loginCtrl')
 const { getSkuReport, getDailyReport, getOrders, orderDetails, confirmOrder, getRequests, confirmRequest, requestDetails } = require('./controllers/reportCtrl')
 const { addRating, getRating, getReviews, addReview } = require('./controllers/ratingCtrl')
 const app = express()
-console.log(path.join(__dirname, '../build'))
+
 app.use(express.static(path.join(__dirname, '../build')))
 app.use(json())
 

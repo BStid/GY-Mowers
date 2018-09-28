@@ -23,7 +23,7 @@ class Header extends Component {
 
   redirect(){
     if(this.props.user && this.props.user.is_admin){
-      window.location.href = `${process.env.REACT_APP_PATH}/admin`
+      window.location.href = `${process.env.REACT_APP_PATH}/#/admin`
     }else if(this.props.user && this.props.user.authid){
       this.props.logout().then(() => window.location.href = process.env.REACT_APP_PATH);
     }else{
@@ -34,7 +34,7 @@ class Header extends Component {
   render(){
     let redirect = ''
     if(this.props.user && this.props.user.authid) {
-      redirect = `${process.env.REACT_APP_PATH}/service`
+      redirect = `${process.env.REACT_APP_PATH}/#/service`
     }else{
       redirect = `${process.env.REACT_APP_LOGIN_PATH}?path=service`
     }
