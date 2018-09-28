@@ -120,8 +120,8 @@ class Cart extends Component{
                 title="Thank you for your purchase!!"
                 text="An email containing order confirmation has been sent. If you do not receive the communication within 5 minutes please contact us for assistance"
                 onConfirm={() => {
-                window.location.href = `${process.env.REACT_APP_PATH}`
                 this.props.clearCart()
+                window.location.href = `${process.env.REACT_APP_PATH}`
                 this.setState({ show: false })
                 }}
             />

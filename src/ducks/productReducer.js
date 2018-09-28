@@ -131,7 +131,7 @@ export default function(state = initialState, action){
       }}case CLEAR_CART:{
         return{
           ...state,
-          cart: []
+          cart: action.payload
         }
     }case `${LOGOUT}_FULFILLED`:{
       return {
@@ -171,7 +171,8 @@ export function setOrders(orders){
 }
 export function clearCart(){
   return{
-    type: CLEAR_CART
+    type: CLEAR_CART,
+    payload: []
   }
 }
 
