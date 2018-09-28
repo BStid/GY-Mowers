@@ -30,6 +30,7 @@ class Service extends Component{
   }
 
   render(){
+    console.log(this.props)
     const options = ['yes', 'no']
     return(
       <div className='service_landing_content'>
@@ -48,7 +49,6 @@ class Service extends Component{
         </div>
         <h6 className='remaining'>Chars Remaining{`(${500 - this.props.serviceIssue.length})`}</h6>
         <button className='service_submit' onClick={() => {
-          console.log(this.props)
           this.redirect()}}>submit</button>
         <img className='service_banner' src='https://cdnmedia.endeavorsuite.com/images/organizations/897e7640-c2db-489c-8204-5e34983c8664/offers/or4448_150737_mo1.jpg?v=1521113282958'></img>
       </div>
