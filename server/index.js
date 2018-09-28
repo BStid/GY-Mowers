@@ -111,7 +111,7 @@ app.get('/login', (req, res, next) => {
   passport.authenticate('auth0'),
   (req, res) => {
     app.locals.pathRedirect ? 
-    res.redirect(`${process.env.AUTH_PATH}${app.locals.pathRedirect}`): 
+    res.redirect(`${process.env.AUTH_PATH}#/${app.locals.pathRedirect}`): 
     res.redirect(`${process.env.AUTH_PATH}`)  
     app.locals.pathRedirect = null
   });

@@ -88,7 +88,7 @@ class OrderDetails extends Component{
               text="Customer has been notified of tracking information"
               onConfirm={() => {
                 this.setState({ show: false })
-                window.location.href = `${process.env.REACT_APP_PATH}/orders`}}
+                window.location.href = `${process.env.REACT_APP_PATH}/#/orders`}}
             />
           </div>
         </div>

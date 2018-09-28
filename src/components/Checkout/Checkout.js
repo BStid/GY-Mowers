@@ -7,7 +7,7 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  window.location.assign(`${process.env.REACT_APP_PATH}/cart`)
+  window.location.assign(`${process.env.REACT_APP_PATH}/#/cart`)
 };
 
 const onToken = (amount, description, email, toggleShow) => token =>

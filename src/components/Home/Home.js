@@ -12,7 +12,7 @@ class Home extends Component{
     console.log(this.props)
     let redirect = ''
     if(this.props.user && this.props.user.authid){
-      redirect = `${process.env.REACT_APP_PATH}/service`
+      redirect = `${process.env.REACT_APP_PATH}/#/service`
     }else{
       redirect = `${process.env.REACT_APP_LOGIN_PATH}`
     }

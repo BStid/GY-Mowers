@@ -28,9 +28,9 @@ class Service extends Component{
   }
   redirect(){
     if(this.props.user && this.props.user.first_name){
-      window.location.href = `${process.env.REACT_APP_PATH}/confirmservice`
+      window.location.href = `${process.env.REACT_APP_PATH}/#/confirmservice`
     }else{
-      window.location.href = `${process.env.REACT_APP_PATH}/serviceinfo`
+      window.location.href = `${process.env.REACT_APP_PATH}/#/serviceinfo`
     }
   }
 
