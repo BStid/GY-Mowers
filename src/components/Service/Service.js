@@ -17,15 +17,10 @@ class Service extends Component{
     this.state = {
       issuePlace: 'Please give us a brief description of the problem or service you need done'
     }
-    this.handleDateChange = this.handleDateChange.bind(this);
     this.redirect = this.redirect.bind(this)
   }
 
-  handleDateChange(date) {
-    this.setState({
-      date: date
-    });
-  }
+
   redirect(){
     if(this.props.user && this.props.user.first_name){
       window.location.href = `${process.env.REACT_APP_PATH}/#/confirmservice`
@@ -52,7 +47,9 @@ class Service extends Component{
           onChange={(e) => this.props.setServiceIssue({issue: e.target.value})}></textarea>
         </div>
         <h6 className='remaining'>Chars Remaining{`(${500 - this.props.serviceIssue.length})`}</h6>
-        <button className='service_submit' onClick={() => this.redirect()}>submit</button>
+        <button className='service_submit' onClick={() => {
+          console.log(this.props)
+          this.redirect()}}>submit</button>
         <img className='service_banner' src='https://cdnmedia.endeavorsuite.com/images/organizations/897e7640-c2db-489c-8204-5e34983c8664/offers/or4448_150737_mo1.jpg?v=1521113282958'></img>
       </div>
       

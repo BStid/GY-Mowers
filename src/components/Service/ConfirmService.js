@@ -23,6 +23,7 @@ class ConfirmService extends Component{
 
   render(){
     let {first_name, last_name, address, zip, state, email, phone, message} = this.props.user
+    console.log(this.props)
     return(
       <div className='confirm_container'>
         <h1 className='confirm_header'>Confirm Details</h1>
