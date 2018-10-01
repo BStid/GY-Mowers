@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import './Footer.css'
+import SweetAlert from 'sweetalert2-react';
 
 export default class Footer extends Component{
   constructor(props){
@@ -29,7 +30,7 @@ export default class Footer extends Component{
       message: ''
     })
 
-    alert('Thank you for your inquiry. A customer service representative will be in contact within 24 business hours')
+    this.setState({ show: true })
     axios.post('/api/send', body).then(res => res.sendStatus(200).catch(err => console.log(err)))
   }
 
@@ -78,6 +79,13 @@ export default class Footer extends Component{
         <div className='footer_bottom'>
           <div className='disclaimer'>*Site for demonstration purposes only. Not affiliated with any brands represented in the demo</div>
         </div>
+        <SweetAlert
+                show={this.state.show}
+                confirmButtonColor= '#f1c116'
+                title="Thank you for your inquiry!!"
+                text="A customer service representative will be in contact within 24 business hours"
+                onConfirm={() => {this.setState({ show: false })}}
+            />
       </div>
     )
   }
